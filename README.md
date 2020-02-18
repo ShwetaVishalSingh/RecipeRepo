@@ -1,1 +1,1 @@
-# RecipeRepo
+This project is all about recipes.
