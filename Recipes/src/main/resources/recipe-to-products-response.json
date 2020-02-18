@@ -1,0 +1,557 @@
+{
+  "processedAt": 1493198607,
+  "processedId": "gfy-5900670f30ce2",
+  "storeIdentifier": "13164",
+  "hasNonAvailableProducts": false,
+  "fileRecipes": [
+    {
+      "recipeId": 5129,
+      "title": "Burgundisk köttgryta",
+      "portions": 6,
+      "nutrition": {
+        "calories": 352.94833333333327,
+        "carbohydrates": 6.2938333333333345,
+        "fat": 20.272833333333335,
+        "protein": 41.34083333333333
+      },
+      "ingredients": [
+        {
+          "id": 29941,
+          "externalId": 10563,
+          "name": "grytbitar av nöt",
+          "amount": 1,
+          "unit": "kg"
+        },
+        {
+          "id": 29960,
+          "externalId": 11296,
+          "name": "kokt potatis",
+          "amount": 0,
+          "unit": "st"
+        },
+        {
+          "id": 29954,
+          "externalId": 11105,
+          "name": "bit morot",
+          "amount": 1,
+          "unit": "st"
+        },
+        {
+          "id": 29942,
+          "externalId": 11549,
+          "name": "smör (extra till stekning)",
+          "amount": 2,
+          "unit": "msk"
+        },
+        {
+          "id": 29955,
+          "externalId": 11702,
+          "name": "ett par timjankvistar",
+          "amount": 0,
+          "unit": "st"
+        },
+        {
+          "id": 29956,
+          "externalId": 11243,
+          "name": "ett par persiljekvistar",
+          "amount": 0,
+          "unit": "st"
+        },
+        {
+          "id": 29943,
+          "externalId": 11713,
+          "name": "tomatpuré",
+          "amount": 1,
+          "unit": "msk"
+        },
+        {
+          "id": 29944,
+          "externalId": 11771,
+          "name": "vetemjöl",
+          "amount": 2,
+          "unit": "msk"
+        },
+        {
+          "id": 29957,
+          "externalId": 10915,
+          "name": "lagerblad",
+          "amount": 2,
+          "unit": "st"
+        },
+        {
+          "id": 29945,
+          "externalId": 10153,
+          "name": "balsamvinäger",
+          "amount": 0.5,
+          "unit": "dl"
+        },
+        {
+          "id": 29958,
+          "externalId": 11623,
+          "name": "steksnöre",
+          "amount": 0,
+          "unit": "st"
+        },
+        {
+          "id": 29946,
+          "externalId": 10739,
+          "name": "kalvbuljong (koncentrerad fond + vatten)",
+          "amount": 2,
+          "unit": "dl"
+        },
+        {
+          "id": 29959,
+          "externalId": 11241,
+          "name": "grovhackad persilja",
+          "amount": 1,
+          "unit": "dl"
+        },
+        {
+          "id": 29947,
+          "externalId": 11434,
+          "name": "flaska rödvin (à 75 cl)",
+          "amount": 0.5,
+          "unit": "st"
+        },
+        {
+          "id": 29948,
+          "externalId": 10139,
+          "name": "paket bacon (skivad à 140 g)",
+          "amount": 2,
+          "unit": "st"
+        },
+        {
+          "id": 29949,
+          "externalId": 10278,
+          "name": "champinjoner",
+          "amount": 200,
+          "unit": "g"
+        },
+        {
+          "id": 29950,
+          "externalId": 11802,
+          "name": "vitlöksklyftor",
+          "amount": 2,
+          "unit": "st"
+        },
+        {
+          "id": 29951,
+          "externalId": 11662,
+          "name": "burk syltlök (à 275 g)",
+          "amount": 1,
+          "unit": "st"
+        },
+        {
+          "id": 29952,
+          "externalId": 11462,
+          "name": "salt",
+          "amount": 0,
+          "unit": "st"
+        },
+        {
+          "id": 29953,
+          "externalId": 11224,
+          "name": "nymalen peppar",
+          "amount": 0,
+          "unit": "st"
+        }
+      ]
+    },
+    {
+      "recipeId": 5129,
+      "title": "Burgundisk köttgryta",
+      "portions": 6,
+      "nutrition": {
+        "calories": 352.94833333333327,
+        "carbohydrates": 6.2938333333333345,
+        "fat": 20.272833333333335,
+        "protein": 41.34083333333333
+      },
+      "ingredients": [
+        {
+          "id": 29941,
+          "externalId": 10563,
+          "name": "grytbitar av nöt",
+          "amount": 1,
+          "unit": "kg"
+        },
+        {
+          "id": 29960,
+          "externalId": 11296,
+          "name": "kokt potatis",
+          "amount": 0,
+          "unit": "st"
+        },
+        {
+          "id": 29954,
+          "externalId": 11105,
+          "name": "bit morot",
+          "amount": 1,
+          "unit": "st"
+        },
+        {
+          "id": 29942,
+          "externalId": 11549,
+          "name": "smör (extra till stekning)",
+          "amount": 2,
+          "unit": "msk"
+        },
+        {
+          "id": 29955,
+          "externalId": 11702,
+          "name": "ett par timjankvistar",
+          "amount": 0,
+          "unit": "st"
+        },
+        {
+          "id": 29956,
+          "externalId": 11243,
+          "name": "ett par persiljekvistar",
+          "amount": 0,
+          "unit": "st"
+        },
+        {
+          "id": 29943,
+          "externalId": 11713,
+          "name": "tomatpuré",
+          "amount": 1,
+          "unit": "msk"
+        },
+        {
+          "id": 29944,
+          "externalId": 11771,
+          "name": "vetemjöl",
+          "amount": 2,
+          "unit": "msk"
+        },
+        {
+          "id": 29957,
+          "externalId": 10915,
+          "name": "lagerblad",
+          "amount": 2,
+          "unit": "st"
+        },
+        {
+          "id": 29945,
+          "externalId": 10153,
+          "name": "balsamvinäger",
+          "amount": 0.5,
+          "unit": "dl"
+        },
+        {
+          "id": 29958,
+          "externalId": 11623,
+          "name": "steksnöre",
+          "amount": 0,
+          "unit": "st"
+        },
+        {
+          "id": 29946,
+          "externalId": 10739,
+          "name": "kalvbuljong (koncentrerad fond + vatten)",
+          "amount": 2,
+          "unit": "dl"
+        },
+        {
+          "id": 29959,
+          "externalId": 11241,
+          "name": "grovhackad persilja",
+          "amount": 1,
+          "unit": "dl"
+        },
+        {
+          "id": 29947,
+          "externalId": 11434,
+          "name": "flaska rödvin (à 75 cl)",
+          "amount": 0.5,
+          "unit": "st"
+        },
+        {
+          "id": 29948,
+          "externalId": 10139,
+          "name": "paket bacon (skivad à 140 g)",
+          "amount": 2,
+          "unit": "st"
+        },
+        {
+          "id": 29949,
+          "externalId": 10278,
+          "name": "champinjoner",
+          "amount": 200,
+          "unit": "g"
+        },
+        {
+          "id": 29950,
+          "externalId": 11802,
+          "name": "vitlöksklyftor",
+          "amount": 2,
+          "unit": "st"
+        },
+        {
+          "id": 29951,
+          "externalId": 11662,
+          "name": "burk syltlök (à 275 g)",
+          "amount": 1,
+          "unit": "st"
+        },
+        {
+          "id": 29952,
+          "externalId": 11462,
+          "name": "salt",
+          "amount": 0,
+          "unit": "st"
+        },
+        {
+          "id": 29953,
+          "externalId": 11224,
+          "name": "nymalen peppar",
+          "amount": 0,
+          "unit": "st"
+        }
+      ]
+    }
+  ],
+  "products": [
+    [
+      {
+        "productId": "2319152500000",
+        "name": "Grytbitar nöt ca 1kg ICA",
+        "quantity": 1,
+        "unitOfOrder": "pce",
+        "consumption": 1,
+        "substituteIdentifier": "f1369e66-d7c5-43b8-aeaf-0b0c924fe53d",
+        "substituteProductsAmount": 1,
+        "common": false,
+        "recipeIngredientIds": [
+          29941
+        ]
+      }
+    ],
+    [
+      {
+        "productId": "7310865005168",
+        "name": "Smör Normalsaltat 82% 500g Svenskt smör",
+        "quantity": 1,
+        "unitOfOrder": "pce",
+        "consumption": 0.072,
+        "substituteIdentifier": "994483b1-fb22-4027-8bee-7cf0388a6ac4",
+        "substituteProductsAmount": 1,
+        "common": true,
+        "recipeIngredientIds": [
+          29942
+        ]
+      }
+    ],
+    [
+      {
+        "productId": "7318690031598",
+        "name": "Tomatpuré 200g ICA",
+        "quantity": 1,
+        "unitOfOrder": "pce",
+        "consumption": 0.06,
+        "substituteIdentifier": "8163cc73-881a-4137-9b1d-e33af33f1754",
+        "substituteProductsAmount": 1,
+        "common": true,
+        "recipeIngredientIds": [
+          29943
+        ]
+      }
+    ],
+    [
+      {
+        "productId": "7310130006029",
+        "name": "Kärnvetemjöl 2kg Kungsörnen",
+        "quantity": 1,
+        "unitOfOrder": "pce",
+        "consumption": 0.009,
+        "substituteIdentifier": "aa64897f-1ec5-44ac-8c60-e7ce68e634c7",
+        "substituteProductsAmount": 1,
+        "common": true,
+        "recipeIngredientIds": [
+          29944
+        ]
+      }
+    ],
+    [
+      {
+        "productId": "7318690035909",
+        "name": "Balsamvinäger 500ml ICA",
+        "quantity": 1,
+        "unitOfOrder": "pce",
+        "consumption": 0.1,
+        "substituteIdentifier": "a1d47d5c-7957-49c7-8751-640d96f831b6",
+        "substituteProductsAmount": 1,
+        "common": true,
+        "recipeIngredientIds": [
+          29945
+        ]
+      }
+    ],
+    [
+      {
+        "productId": "8712100750588",
+        "name": "Köttbuljong 12-p 6l Knorr",
+        "quantity": 1,
+        "unitOfOrder": "pce",
+        "consumption": 0.016666666666666666,
+        "substituteIdentifier": "78950a3d-3d2b-49f9-bad3-e77eb8852258",
+        "substituteProductsAmount": 1,
+        "common": true,
+        "recipeIngredientIds": [
+          29946
+        ]
+      }
+    ],
+    [
+      {
+        "productId": "7318690089773",
+        "name": "Rödvinsvinäger 250ml ICA",
+        "quantity": 1,
+        "unitOfOrder": "pce",
+        "consumption": 0.04,
+        "substituteIdentifier": "2b05b830-0480-4bfe-addd-d24767e0865f",
+        "substituteProductsAmount": 1,
+        "common": true,
+        "recipeIngredientIds": [
+          29947
+        ]
+      }
+    ],
+    [
+      {
+        "productId": "7300208345006",
+        "name": "Bacon 140g Scan",
+        "quantity": 1,
+        "unitOfOrder": "pce",
+        "consumption": 0.21428571428571427,
+        "substituteIdentifier": "556cc593-69cb-4bd6-baa4-3250376e1b18",
+        "substituteProductsAmount": 1,
+        "common": false,
+        "recipeIngredientIds": [
+          29948
+        ]
+      }
+    ],
+    [
+      {
+        "productId": "2092464500000440",
+        "name": "Champinjon ca 15g",
+        "quantity": 0.2,
+        "unitOfOrder": "kgm",
+        "consumption": 1,
+        "substituteIdentifier": "806fe8fa-9a38-4d1a-93c1-65e5fff46d7e",
+        "substituteProductsAmount": 1,
+        "common": false,
+        "recipeIngredientIds": [
+          29949
+        ]
+      }
+    ],
+    [
+      {
+        "productId": "7330671123337",
+        "name": "Vitlök Morado ca 75g Klass 1 ICA",
+        "quantity": 1,
+        "unitOfOrder": "pce",
+        "consumption": 0.16666666666666666,
+        "substituteIdentifier": "325a9290-5bb1-4f33-a186-213b0e44a8e2",
+        "substituteProductsAmount": 1,
+        "common": false,
+        "recipeIngredientIds": [
+          29950
+        ]
+      }
+    ],
+    [
+      {
+        "productId": "7318690005094",
+        "name": "Syltlök 340g ICA",
+        "quantity": 1,
+        "unitOfOrder": "pce",
+        "consumption": 0.008823529411764706,
+        "substituteIdentifier": "5f789875-2acb-4b6b-9167-83602902c162",
+        "substituteProductsAmount": 1,
+        "common": false,
+        "recipeIngredientIds": [
+          29951
+        ]
+      }
+    ],
+    [
+      {
+        "productId": "7318693325106",
+        "name": "Nyskördade morötter 1kg Klass 1 ICA",
+        "quantity": 1,
+        "unitOfOrder": "pce",
+        "consumption": 0.05,
+        "substituteIdentifier": "fac3c8e9-ec05-43da-b619-3e6dbcf48652",
+        "substituteProductsAmount": 1,
+        "common": false,
+        "recipeIngredientIds": [
+          29954
+        ]
+      }
+    ],
+    [
+      {
+        "productId": "7313300000995",
+        "name": "Ekologisk Timjan i kruka 1-p KRAVSvegro",
+        "quantity": 1,
+        "unitOfOrder": "pce",
+        "consumption": 0,
+        "substituteIdentifier": "ad8b7fc9-ee85-4848-aa2a-77fbf6412482",
+        "substituteProductsAmount": 1,
+        "common": false,
+        "recipeIngredientIds": [
+          29955
+        ]
+      }
+    ],
+    [
+      {
+        "productId": "7318690071877",
+        "name": "Lagerblad 4g ICA",
+        "quantity": 1,
+        "unitOfOrder": "pce",
+        "consumption": 0.5,
+        "substituteIdentifier": "a7b8b18a-9642-4c0c-bd1a-cd9087613323",
+        "substituteProductsAmount": 1,
+        "common": false,
+        "recipeIngredientIds": [
+          29957
+        ]
+      }
+    ],
+    [
+      {
+        "productId": "7318690109754",
+        "name": "Persilja Finhackad Fryst 40g ICA",
+        "quantity": 1,
+        "unitOfOrder": "pce",
+        "consumption": 0.35,
+        "substituteIdentifier": "10c87a2c-b9f6-453b-8862-9825b90ac49a",
+        "substituteProductsAmount": 1,
+        "common": false,
+        "recipeIngredientIds": [
+          29959
+        ]
+      }
+    ],
+    [
+      {
+        "productId": "2092472800000752",
+        "name": "Potatis Fast ca 100g",
+        "quantity": 0,
+        "unitOfOrder": "kgm",
+        "consumption": 0,
+        "substituteIdentifier": "b4decd35-0ff1-454b-bbf4-211dabde2403",
+        "substituteProductsAmount": 1,
+        "common": false,
+        "recipeIngredientIds": [
+          29960
+        ]
+      }
+    ]
+  ],
+  "productExceptions": []
+}
