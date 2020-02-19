@@ -1,5 +1,6 @@
 package com.recipe.se.recipes.infrastructure.rest;
 
+import com.recipe.se.recipes.infrastructure.recipe.incoming.Recipe;
 import com.recipe.se.recipes.infrastructure.recipe.outgoing.DatabaseRecipe;
 import com.recipe.se.recipes.application.RecipeService;
 import com.recipe.se.recipes.infrastructure.recipe.incoming.Paylaod;
@@ -24,7 +25,7 @@ public class RecipeController {
 
     @GetMapping
     public ResponseEntity getRecipes() {
-        List<DatabaseRecipe> recipeList = recipeService.fetchAllRecipies();
+        List<Recipe> recipeList = recipeService.fetchAllRecipies();
         return ResponseEntity.ok(recipeList);
     }
 
@@ -49,12 +50,8 @@ public class RecipeController {
 
     @DeleteMapping(value = "{recipeId}")
     public ResponseEntity deleteRecipe(@PathVariable String recipeId) {
-        DatabaseRecipe recipe = recipeService.deleteRecipeById(recipeId);
-        if (recipe.getRecipeId().equals(recipeId)) {
+         recipeService.deleteRecipeById(recipeId);
             return ResponseEntity.ok("Recipe Has been delete");
-        } else {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("{Something went wrong while deteleting recipe}");
-        }
 
     }
 

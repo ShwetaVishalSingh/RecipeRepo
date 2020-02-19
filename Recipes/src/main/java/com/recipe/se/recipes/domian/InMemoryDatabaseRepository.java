@@ -1,24 +1,31 @@
 package com.recipe.se.recipes.domian;
 
 import com.recipe.se.recipes.infrastructure.recipe.incoming.Paylaod;
+import com.recipe.se.recipes.infrastructure.recipe.incoming.Recipe;
 import com.recipe.se.recipes.infrastructure.recipe.outgoing.DatabaseRecipe;
 import com.recipe.se.recipes.infrastructure.recipe.outgoing.DatabaseRecipeRepository;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class InMemoryDatabaseRepository implements RecipeRepository {
 
-    private final CrudRepository<DatabaseRecipe, String> databaseRepository;
+    private final DatabaseRecipeRepository databaseRepository;
 
-    public InMemoryDatabaseRepository(CrudRepository databaseRepository) {
+    public InMemoryDatabaseRepository(DatabaseRecipeRepository databaseRepository) {
         this.databaseRepository = databaseRepository;
     }
 
     @Override
-    public List<DatabaseRecipe> fetchAllRecipes() {
-         databaseRepository.findAll();
-         return null;
+    public List<Recipe> fetchAllRecipes() {
+        List<Recipe> recipes = new ArrayList<>();
+
+        Iterable<DatabaseRecipe> databaseRecipes = databaseRepository.findAll();
+        for(DatabaseRecipe databaseRecipe : databaseRecipes){
+            recipes.add(Recipe.of(databaseRecipe));
+        }
+        return recipes;
     }
 
     @Override
@@ -27,8 +34,9 @@ public class InMemoryDatabaseRepository implements RecipeRepository {
     }
 
     @Override
-    public DatabaseRecipe deleteRecipeById(String recipeId) {
-        return null;
+    public void deleteRecipeById(String recipeId) {
+
+         databaseRepository.deleteById(recipeId);
     }
 
     @Override
