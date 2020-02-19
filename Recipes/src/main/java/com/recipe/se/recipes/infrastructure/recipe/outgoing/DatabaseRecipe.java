@@ -40,7 +40,7 @@ public class DatabaseRecipe {
     public static DatabaseRecipe of(Recipe userRecipe) {
         return new DatabaseRecipe(userRecipe.getRecipeId(),
                 userRecipe.getRecipeName(),
-                userRecipe.getPortion(), StringUtils.join(userRecipe.getIngredients(), '|'));
+                userRecipe.getPortion(), StringUtils.join(userRecipe.getIngredients(), '-'));
     }
 
     public String getRecipeId() {

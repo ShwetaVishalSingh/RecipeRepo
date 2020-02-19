@@ -2,7 +2,11 @@ package com.recipe.se.recipes.infrastructure.recipe.incoming;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.recipe.se.recipes.infrastructure.recipe.outgoing.DatabaseRecipe;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Recipe {
@@ -18,6 +22,15 @@ public class Recipe {
         this.recipeName = recipeName;
         this.portion = portion;
         this.ingredients = ingredients;
+    }
+
+    public static Recipe of(DatabaseRecipe databaseRecipe) {
+        return new Recipe(databaseRecipe.getRecipeId(),databaseRecipe.getRecipeName(),databaseRecipe.getPortion(), convertIngredientsToListOfIngredients(databaseRecipe.getIngredients()));
+    }
+
+    private static List<String> convertIngredientsToListOfIngredients(String ingredients) {
+        String[] spilited = ingredients.split("-");
+        return Arrays.asList(spilited);
     }
 
     public String getRecipeId() {

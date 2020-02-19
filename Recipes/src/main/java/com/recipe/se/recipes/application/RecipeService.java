@@ -2,6 +2,7 @@ package com.recipe.se.recipes.application;
 
 import com.recipe.se.recipes.domian.RecipeRepository;
 import com.recipe.se.recipes.infrastructure.recipe.incoming.Paylaod;
+import com.recipe.se.recipes.infrastructure.recipe.incoming.Recipe;
 import com.recipe.se.recipes.infrastructure.recipe.outgoing.DatabaseRecipe;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public class RecipeService {
         this.recipeRepository = recipeRepository;
     }
 
-    public List<DatabaseRecipe> fetchAllRecipies() {
+    public List<Recipe> fetchAllRecipies() {
        return recipeRepository.fetchAllRecipes();
     }
 
@@ -22,8 +23,8 @@ public class RecipeService {
        return recipeRepository.fetchRecipeById(recipeId);
     }
 
-    public DatabaseRecipe deleteRecipeById(String recipeId) {
-        return recipeRepository.deleteRecipeById(recipeId);
+    public void deleteRecipeById(String recipeId) {
+        recipeRepository.deleteRecipeById(recipeId);
     }
 
     public void addRecipes(Paylaod paylaod) {

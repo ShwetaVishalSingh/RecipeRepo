@@ -14,7 +14,7 @@ public class RecipeConfiguration {
     private RecipeService recipeService;
 
 
-    public RecipeConfiguration(CrudRepository databaseRepository) {
+    public RecipeConfiguration(DatabaseRecipeRepository databaseRepository) {
         RecipeRepository inMemoryDataBaseRepository = new InMemoryDatabaseRepository(databaseRepository);
 
         this.recipeService = new RecipeService(inMemoryDataBaseRepository);
