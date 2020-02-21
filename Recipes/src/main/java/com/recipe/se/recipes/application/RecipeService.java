@@ -4,6 +4,8 @@ import com.recipe.se.recipes.domian.RecipeRepository;
 import com.recipe.se.recipes.infrastructure.recipe.incoming.Paylaod;
 import com.recipe.se.recipes.infrastructure.recipe.incoming.Recipe;
 import com.recipe.se.recipes.infrastructure.recipe.outgoing.DatabaseRecipe;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -15,15 +17,16 @@ public class RecipeService {
         this.recipeRepository = recipeRepository;
     }
 
-    public List<Recipe> fetchAllRecipies() {
+    public List<Recipe> fetchAllRecipies() throws Exception {
        return recipeRepository.fetchAllRecipes();
     }
 
-    public DatabaseRecipe fetchRecipeById(String recipeId) {
+    public Recipe fetchRecipeById(String recipeId) throws Exception {
        return recipeRepository.fetchRecipeById(recipeId);
     }
 
     public void deleteRecipeById(String recipeId) {
+
         recipeRepository.deleteRecipeById(recipeId);
     }
 
@@ -31,7 +34,7 @@ public class RecipeService {
         recipeRepository.addRecipes(paylaod);
     }
 
-    public DatabaseRecipe updateRecipe(String recipeId, Paylaod paylaod) {
-        return recipeRepository.updateRecipe(recipeId, paylaod);
+    public void updateRecipe(String recipeId, Paylaod paylaod) throws Exception {
+        recipeRepository.updateRecipe(recipeId, paylaod);
     }
 }

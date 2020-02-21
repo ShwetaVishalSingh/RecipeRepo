@@ -1,9 +1,9 @@
 package com.recipe.se.recipes.infrastructure.rest;
 
-import com.recipe.se.recipes.infrastructure.recipe.incoming.Recipe;
-import com.recipe.se.recipes.infrastructure.recipe.outgoing.DatabaseRecipe;
 import com.recipe.se.recipes.application.RecipeService;
 import com.recipe.se.recipes.infrastructure.recipe.incoming.Paylaod;
+import com.recipe.se.recipes.infrastructure.recipe.incoming.Recipe;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,12 +25,20 @@ public class RecipeController {
 
     @GetMapping
     public ResponseEntity getRecipes() {
-        List<Recipe> recipeList = recipeService.fetchAllRecipies();
+        List<Recipe> recipeList;
+        try {
+            recipeList = recipeService.fetchAllRecipies();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something went wrong while fetching the recipe");
+        }
         return ResponseEntity.ok(recipeList);
     }
 
     @PostMapping(value = "addRecipe")
     public ResponseEntity addRecipes(@RequestBody Paylaod paylaod) {
+        if(null == paylaod) {
+            return ResponseEntity.badRequest().body(" payload is empty");
+        }
         try {
             recipeService.addRecipes(paylaod);
             return ResponseEntity.ok().body("Recipe has been added");
@@ -44,12 +52,21 @@ public class RecipeController {
     @GetMapping(value = "{recipeId}")
     public ResponseEntity getRecipe(@PathVariable String recipeId) {
 
-        DatabaseRecipe recipe = recipeService.fetchRecipeById(recipeId);
+        Recipe recipe = null;
+        try {
+            recipe = recipeService.fetchRecipeById(recipeId);
+        } catch (Exception e) {
+            ResponseEntity.ok().body("Given recipe is not available in database");
+        }
         return ResponseEntity.ok(recipe);
     }
 
     @DeleteMapping(value = "{recipeId}")
-    public ResponseEntity deleteRecipe(@PathVariable String recipeId) {
+    public ResponseEntity deleteRecipe(@PathVariable String recipeId)
+    {
+         if(StringUtils.isEmpty(recipeId)) {
+             return ResponseEntity.badRequest().body( "recipeId is empty");
+         }
          recipeService.deleteRecipeById(recipeId);
             return ResponseEntity.ok("Recipe Has been delete");
 
@@ -57,13 +74,16 @@ public class RecipeController {
 
     @PostMapping(value = "{recipeId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity updateRecipe(@PathVariable String recipeId, @RequestBody Paylaod paylaod) {
-        DatabaseRecipe recipe = recipeService.updateRecipe(recipeId, paylaod);
-
-        if (recipe.getRecipeId().equals(recipeId)) {
-            return ResponseEntity.ok(recipe);
-        } else {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("{Something went wrong while deteleting recipe}");
+        if(StringUtils.isEmpty(recipeId) || null == paylaod){
+            return ResponseEntity.badRequest().body("Recipe id is null or empty");
         }
+        try {
+            recipeService.updateRecipe(recipeId, paylaod);
+        } catch (Exception e) {
+            return ResponseEntity.ok().body("Recipe is not available so we can not update it");
+        }
+
+        return ResponseEntity.ok("Recipe Udated Successfully");
     }
 
 }
