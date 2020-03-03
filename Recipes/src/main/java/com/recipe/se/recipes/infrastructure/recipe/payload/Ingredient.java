@@ -40,6 +40,7 @@ public class Ingredient {
                 ", name='" + name + '\'' +
                 ", amount='" + amount + '\'' +
                 ", unit='" + unit + '\'' +
+                ", unit='" + unit + '\'' +
                 '}';
     }
 }
