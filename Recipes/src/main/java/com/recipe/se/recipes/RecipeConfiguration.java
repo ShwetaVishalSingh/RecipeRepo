@@ -3,10 +3,9 @@ package com.recipe.se.recipes;
 import com.recipe.se.recipes.application.RecipeService;
 import com.recipe.se.recipes.domian.InMemoryDatabaseRepository;
 import com.recipe.se.recipes.domian.RecipeRepository;
-import com.recipe.se.recipes.infrastructure.recipe.outgoing.DatabaseRecipeRepository;
+import com.recipe.se.recipes.infrastructure.recipe.h2.DatabaseRecipeRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.repository.CrudRepository;
 
 @Configuration
 public class RecipeConfiguration {

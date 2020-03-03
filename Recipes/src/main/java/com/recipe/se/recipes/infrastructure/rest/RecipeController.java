@@ -1,8 +1,8 @@
 package com.recipe.se.recipes.infrastructure.rest;
 
 import com.recipe.se.recipes.application.RecipeService;
-import com.recipe.se.recipes.infrastructure.recipe.incoming.Paylaod;
-import com.recipe.se.recipes.infrastructure.recipe.incoming.Recipe;
+import com.recipe.se.recipes.infrastructure.recipe.payload.Paylaod;
+import com.recipe.se.recipes.infrastructure.recipe.payload.Recipe;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

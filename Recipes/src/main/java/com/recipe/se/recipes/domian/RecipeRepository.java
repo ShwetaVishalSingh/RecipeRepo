@@ -1,8 +1,7 @@
 package com.recipe.se.recipes.domian;
 
-import com.recipe.se.recipes.infrastructure.recipe.incoming.Paylaod;
-import com.recipe.se.recipes.infrastructure.recipe.incoming.Recipe;
-import com.recipe.se.recipes.infrastructure.recipe.outgoing.DatabaseRecipe;
+import com.recipe.se.recipes.infrastructure.recipe.payload.Paylaod;
+import com.recipe.se.recipes.infrastructure.recipe.payload.Recipe;
 
 import java.util.List;
 
