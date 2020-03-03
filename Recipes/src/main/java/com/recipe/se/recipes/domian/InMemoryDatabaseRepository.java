@@ -1,10 +1,10 @@
 package com.recipe.se.recipes.domian;
 
-import com.recipe.se.recipes.infrastructure.recipe.incoming.Paylaod;
-import com.recipe.se.recipes.infrastructure.recipe.incoming.Recipe;
-import com.recipe.se.recipes.infrastructure.recipe.outgoing.DatabaseRecipe;
-import com.recipe.se.recipes.infrastructure.recipe.outgoing.DatabaseRecipeRepository;
-import org.apache.commons.lang3.*;
+import com.recipe.se.recipes.infrastructure.recipe.payload.Paylaod;
+import com.recipe.se.recipes.infrastructure.recipe.payload.Recipe;
+import com.recipe.se.recipes.infrastructure.recipe.h2.DatabaseRecipe;
+import com.recipe.se.recipes.infrastructure.recipe.h2.DatabaseRecipeRepository;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,12 +17,19 @@ public class InMemoryDatabaseRepository implements RecipeRepository {
     }
 
     @Override
-    public List<Recipe> fetchAllRecipes() throws Exception{
+    public void addRecipes(Paylaod recipe) {
+
+        DatabaseRecipe databaseRecipe = DatabaseRecipe.convertToDatabaseRecipe(recipe.getUserRecipe());
+        databaseRepository.save(databaseRecipe);
+    }
+
+
+    @Override
+    public List<Recipe> fetchAllRecipes() {
         List<Recipe> recipes = new ArrayList<>();
-        Iterable<DatabaseRecipe> databaseRecipes;
-         databaseRecipes = databaseRepository.findAll();
+        Iterable<DatabaseRecipe> databaseRecipes = databaseRepository.findAll();
         for(DatabaseRecipe databaseRecipe : databaseRecipes){
-            recipes.add(Recipe.of(databaseRecipe));
+            recipes.add(Recipe.convertToRecipe(databaseRecipe));
         }
         return recipes;
     }
@@ -41,7 +48,7 @@ public class InMemoryDatabaseRepository implements RecipeRepository {
             }
 
 
-        return Recipe.of(databaseRecipe);
+        return Recipe.convertToRecipe(databaseRecipe);
     }
 
     @Override
@@ -50,12 +57,6 @@ public class InMemoryDatabaseRepository implements RecipeRepository {
          databaseRepository.deleteById(recipeId);
     }
 
-    @Override
-    public void addRecipes(Paylaod paylaod) {
-        //return recipeStateRepository.save(toRecipeState(paylaod));
-        DatabaseRecipe databaseRecipe = DatabaseRecipe.of(paylaod.getUserRecipe());
-        databaseRepository.save(databaseRecipe);
-    }
 
 
     @Override
@@ -67,7 +68,7 @@ public class InMemoryDatabaseRepository implements RecipeRepository {
         }
         recipeNeedsTobeUpdated.setRecipeName(paylaod.getUserRecipe().getRecipeName());
         recipeNeedsTobeUpdated.setPortion(paylaod.getUserRecipe().getPortion());
-        recipeNeedsTobeUpdated.setIngredients(StringUtils.join(paylaod.getUserRecipe().getIngredients(), '-'));
+        recipeNeedsTobeUpdated.setIngredients(DatabaseRecipe.toDatabaseIngredients(paylaod.getUserRecipe().getIngredients()));
         databaseRepository.save(recipeNeedsTobeUpdated);
     }
 }
