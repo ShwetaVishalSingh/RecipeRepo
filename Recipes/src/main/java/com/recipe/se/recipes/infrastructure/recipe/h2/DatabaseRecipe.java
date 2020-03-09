@@ -1,6 +1,7 @@
 package com.recipe.se.recipes.infrastructure.recipe.h2;
 
-import com.recipe.se.recipes.infrastructure.recipe.payload.Recipe;
+import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.Recipe;
+import com.recipe.se.recipes.infrastructure.store.h2store.DatabaseStore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -27,31 +28,48 @@ public class DatabaseRecipe implements Serializable {
     @JoinColumn(name="RECIPE_ID")
     private Set<Ingredient> ingredients;
 
+    @ManyToMany(cascade=CascadeType.ALL)
+    @JoinTable(name="RECIPE_STORE", joinColumns={@JoinColumn(referencedColumnName="ID")} , inverseJoinColumns={@JoinColumn(referencedColumnName="ID")})
+    private Set<DatabaseStore> databaseStores;
+
+
+    public Set<DatabaseStore> getDatabaseStores() {
+        return databaseStores;
+    }
+
+    public void setDatabaseStores(Set<DatabaseStore> databaseStores) {
+        this.databaseStores = databaseStores;
+    }
 
     public DatabaseRecipe() {
     }
 
-    public DatabaseRecipe(String recipeId, String recipeName, String portion, Set<Ingredient> ingredients) {
+    public DatabaseRecipe(String recipeId, String recipeName, String portion, Set<Ingredient> ingredients
+    , Set<DatabaseStore> databaseStores) {
         this.recipeId = recipeId;
         this.recipeName = recipeName;
         this.portion = portion;
         this.ingredients = ingredients;
+        this.databaseStores = databaseStores;
     }
 
 
-    public static DatabaseRecipe convertToDatabaseRecipe(Recipe userRecipe) {
+    public static DatabaseRecipe convertToDatabaseRecipe(Recipe userRecipe, Set<DatabaseStore> databaseStores) {
+
         return new DatabaseRecipe(UUID.randomUUID().toString(),
                 userRecipe.getRecipeName(),
-                userRecipe.getPortion(), toDatabaseIngredients(userRecipe.getIngredients()));
+                userRecipe.getPortion(), toDatabaseIngredients(userRecipe.getIngredients()),
+                databaseStores);
     }
 
-    public static Set<Ingredient> toDatabaseIngredients(Set<com.recipe.se.recipes.infrastructure.recipe.payload.Ingredient> ingredients) {
+    public static Set<Ingredient> toDatabaseIngredients(Set<com.recipe.se.recipes.infrastructure.recipe.payload.recipe.Ingredient> ingredients) {
         Set<Ingredient> ingredientSet = new HashSet<>();
-        for (com.recipe.se.recipes.infrastructure.recipe.payload.Ingredient ingredient: ingredients ) {
+        for (com.recipe.se.recipes.infrastructure.recipe.payload.recipe.Ingredient ingredient: ingredients ) {
          ingredientSet.add(new Ingredient(UUID.randomUUID().toString(),ingredient.getName(),ingredient.getAmount(),ingredient.getUnit()));
         }
         return ingredientSet;
     }
+
 
     public String getRecipeId() {
         return recipeId;

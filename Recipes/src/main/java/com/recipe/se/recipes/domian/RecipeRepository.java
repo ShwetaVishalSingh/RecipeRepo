@@ -1,7 +1,7 @@
 package com.recipe.se.recipes.domian;
 
-import com.recipe.se.recipes.infrastructure.recipe.payload.Paylaod;
-import com.recipe.se.recipes.infrastructure.recipe.payload.Recipe;
+import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.Paylaod;
+import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.Recipe;
 
 import java.util.List;
 
@@ -14,5 +14,7 @@ public interface RecipeRepository {
 
     void addRecipes(Paylaod paylaod);
 
-    void updateRecipe(String recipeId, Paylaod paylaod) throws Exception;
+    default void updateRecipe(String recipeId, Paylaod paylaod) throws Exception {
+
+    }
 }
