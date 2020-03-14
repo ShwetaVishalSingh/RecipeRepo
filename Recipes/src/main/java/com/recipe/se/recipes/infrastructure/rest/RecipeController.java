@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@Validated
 @RequestMapping("/api/recipe/")
 public class RecipeController {
 
@@ -36,14 +38,14 @@ public class RecipeController {
 
     @PostMapping(value = "addRecipe")
     public ResponseEntity addRecipes(@RequestBody Paylaod paylaod) {
-        if(null == paylaod) {
+        if (null == paylaod) {
             return ResponseEntity.badRequest().body(" payload is empty");
         }
         try {
             recipeService.addRecipes(paylaod);
             return ResponseEntity.ok().body("Recipe has been added");
         } catch (Exception e) {
-             return ResponseEntity.badRequest().body("Something went wrong" + e);
+            return ResponseEntity.badRequest().body("Something went wrong" + e);
         }
     }
 
@@ -61,19 +63,18 @@ public class RecipeController {
     }
 
     @DeleteMapping(value = "{recipeId}")
-    public ResponseEntity deleteRecipe(@PathVariable String recipeId)
-    {
-         if(StringUtils.isEmpty(recipeId)) {
-             return ResponseEntity.badRequest().body( "recipeId is empty");
-         }
-         recipeService.deleteRecipeById(recipeId);
-            return ResponseEntity.ok("Recipe Has been delete");
+    public ResponseEntity deleteRecipe(@PathVariable String recipeId) {
+        if (StringUtils.isEmpty(recipeId)) {
+            return ResponseEntity.badRequest().body("recipeId is empty");
+        }
+        recipeService.deleteRecipeById(recipeId);
+        return ResponseEntity.ok("Recipe Has been delete");
 
     }
 
     @PostMapping(value = "{recipeId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity updateRecipe(@PathVariable String recipeId, @RequestBody Paylaod paylaod) {
-        if(StringUtils.isEmpty(recipeId) || null == paylaod){
+        if (StringUtils.isEmpty(recipeId) || null == paylaod) {
             return ResponseEntity.badRequest().body("Recipe id is null or empty");
         }
         try {
@@ -85,10 +86,15 @@ public class RecipeController {
         return ResponseEntity.ok("Recipe Udated Successfully");
     }
 
-    @GetMapping( value = "store/{storeId}")
-    public ResponseEntity fetchStoreRecipes(@PathVariable String storeId){
+    @GetMapping(value = "store/{storeId}")
+    public ResponseEntity fetchStoreRecipes(@PathVariable String storeId) {
         List<Recipe> recipes = recipeService.fetchByStore(storeId);
         return ResponseEntity.ok(recipes);
     }
 
+    @GetMapping(value = "search/{searchTerm}")
+    public ResponseEntity findRecipeBy(@PathVariable String searchTerm) {
+        List<Recipe> recipes = recipeService.findRecipeBy(searchTerm);
+        return ResponseEntity.ok(recipes);
+    }
 }
