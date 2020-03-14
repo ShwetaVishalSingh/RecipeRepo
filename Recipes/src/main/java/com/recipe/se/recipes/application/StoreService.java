@@ -1,6 +1,6 @@
 package com.recipe.se.recipes.application;
 
-import com.recipe.se.recipes.domian.store.StoreRepository;
+import com.recipe.se.recipes.domain.store.StoreRepository;
 import com.recipe.se.recipes.infrastructure.store.Store;
 import com.recipe.se.recipes.infrastructure.store.StorePayload;
 
