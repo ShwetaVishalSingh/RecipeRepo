@@ -43,9 +43,8 @@ public class RecipeController {
             recipeService.addRecipes(paylaod);
             return ResponseEntity.ok().body("Recipe has been added");
         } catch (Exception e) {
-            e.printStackTrace();
+             return ResponseEntity.badRequest().body("Something went wrong" + e);
         }
-        return ResponseEntity.ok("");
     }
 
 
@@ -84,6 +83,12 @@ public class RecipeController {
         }
 
         return ResponseEntity.ok("Recipe Udated Successfully");
+    }
+
+    @GetMapping( value = "store/{storeId}")
+    public ResponseEntity fetchStoreRecipes(@PathVariable String storeId){
+        List<Recipe> recipes = recipeService.fetchByStore(storeId);
+        return ResponseEntity.ok(recipes);
     }
 
 }
