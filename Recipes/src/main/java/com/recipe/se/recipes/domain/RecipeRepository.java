@@ -19,4 +19,6 @@ public interface RecipeRepository {
 
 
     List<Recipe> fetchByStore(String storeId);
+
+    List<Recipe> findRecipeBy(String searchTerm);
 }

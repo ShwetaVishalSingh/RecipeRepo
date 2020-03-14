@@ -110,6 +110,15 @@ public class InMemoryDatabaseRepository implements RecipeRepository {
 
     }
 
+    @Override
+    public List<Recipe> findRecipeBy(String searchTerm) {
+        List<Recipe> recipesByNames = new ArrayList<>();
+        List<DatabaseRecipe> databaseRecipes = databaseRepository.findByName(searchTerm);
+        for (DatabaseRecipe databaseRecipe : databaseRecipes) {
+            recipesByNames.add(Recipe.convertToRecipe(databaseRecipe));
+        }
+        return recipesByNames;
+    }
 }
 
 
