@@ -2,9 +2,14 @@ package com.recipe.se.recipes.infrastructure.recipe.h2;
 
 import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.Recipe;
 import com.recipe.se.recipes.infrastructure.store.h2store.DatabaseStore;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -24,6 +29,14 @@ public class DatabaseRecipe implements Serializable {
     @Column(name = "PROTIONS", nullable = false)
     private String portion;
 
+    @CreationTimestamp
+    @Column(name = "CREATED_DATE")
+    private Date createdDate;
+
+    @UpdateTimestamp
+    @Column(name = "LASTMODIFIED_DATE")
+    private Date modifiedDate;
+
     @OneToMany(cascade=CascadeType.ALL)
     @JoinColumn(name="RECIPE_ID")
     private Set<Ingredient> ingredients;
@@ -32,6 +45,13 @@ public class DatabaseRecipe implements Serializable {
     @JoinTable(name="RECIPE_STORE", joinColumns={@JoinColumn(referencedColumnName="ID")} , inverseJoinColumns={@JoinColumn(referencedColumnName="ID")})
     private Set<DatabaseStore> databaseStores;
 
+   //this will execute every time before persisting the data. we are checking if created time is null then add today date and this is the case when we add
+    //new recipe.
+
+    @PrePersist
+    protected void prePersist(){
+        if(this.createdDate == null) createdDate = new Date();
+    }
 
     public Set<DatabaseStore> getDatabaseStores() {
         return databaseStores;

@@ -3,7 +3,8 @@ package com.recipe.se.recipes.domain;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class ConvertToRecipeTest {
+class
+ConvertToRecipeTest {
 
     @Test
     void shouldReturnHelloWorld() {
