@@ -1,4 +1,4 @@
-package com.recipe.se.recipes.domain.store;
+package com.recipe.se.recipes.business.domain.store;
 
 
 import com.recipe.se.recipes.infrastructure.store.Store;

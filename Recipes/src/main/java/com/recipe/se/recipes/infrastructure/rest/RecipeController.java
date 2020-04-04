@@ -1,6 +1,6 @@
 package com.recipe.se.recipes.infrastructure.rest;
 
-import com.recipe.se.recipes.application.RecipeService;
+import com.recipe.se.recipes.service.RecipeService;
 import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.Paylaod;
 import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.Recipe;
 import org.apache.commons.lang3.StringUtils;

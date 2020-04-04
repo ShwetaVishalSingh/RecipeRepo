@@ -1,6 +1,6 @@
 package com.recipe.se.recipes.infrastructure.rest;
 
-import com.recipe.se.recipes.application.StoreService;
+import com.recipe.se.recipes.service.StoreService;
 import com.recipe.se.recipes.infrastructure.store.Store;
 import com.recipe.se.recipes.infrastructure.store.StorePayload;
 import org.springframework.beans.factory.annotation.Autowired;

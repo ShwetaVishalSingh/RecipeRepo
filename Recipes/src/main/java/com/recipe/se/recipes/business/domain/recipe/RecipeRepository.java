@@ -1,5 +1,7 @@
-package com.recipe.se.recipes.domain;
+package com.recipe.se.recipes.business.domain.recipe;
 
+import com.recipe.se.recipes.business.domain.exception.RecipeNotFoundException;
+import com.recipe.se.recipes.business.domain.exception.StoreNotFoundException;
 import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.Paylaod;
 import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.Recipe;
 
@@ -14,7 +16,7 @@ public interface RecipeRepository {
 
     void addRecipes(Paylaod paylaod) throws StoreNotFoundException;
 
-     void updateRecipe(String recipeId, Paylaod paylaod) throws  RecipeNotFoundException ;
+     void updateRecipe(String recipeId, Paylaod paylaod) throws RecipeNotFoundException;
 
 
 

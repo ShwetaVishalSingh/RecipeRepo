@@ -1,5 +1,7 @@
-package com.recipe.se.recipes.domain;
+package com.recipe.se.recipes.business.domain.recipe;
 
+import com.recipe.se.recipes.business.domain.exception.RecipeNotFoundException;
+import com.recipe.se.recipes.business.domain.exception.StoreNotFoundException;
 import com.recipe.se.recipes.infrastructure.recipe.h2.DatabaseRecipe;
 import com.recipe.se.recipes.infrastructure.recipe.h2.DatabaseRecipeRepository;
 import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.Paylaod;
