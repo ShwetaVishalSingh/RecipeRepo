@@ -1,4 +1,4 @@
-package com.recipe.se.recipes.business.domain.exception;
+package com.recipe.se.recipes.domain.exception;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;

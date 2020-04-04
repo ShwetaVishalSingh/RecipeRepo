@@ -1,14 +1,14 @@
 package com.recipe.se.recipes;
 
-import com.recipe.se.recipes.service.RecipeService;
-import com.recipe.se.recipes.service.StoreService;
-import com.recipe.se.recipes.service.UserService;
-import com.recipe.se.recipes.business.domain.recipe.InMemoryDatabaseRepository;
-import com.recipe.se.recipes.business.domain.recipe.RecipeRepository;
-import com.recipe.se.recipes.business.domain.store.StoreH2DatabaseRepository;
-import com.recipe.se.recipes.business.domain.store.StoreRepository;
-import com.recipe.se.recipes.business.domain.user.UserH2DatabaseRepository;
-import com.recipe.se.recipes.business.domain.user.UserRepository;
+import com.recipe.se.recipes.application.RecipeService;
+import com.recipe.se.recipes.application.StoreService;
+import com.recipe.se.recipes.application.UserService;
+import com.recipe.se.recipes.domain.recipe.InMemoryDatabaseRepository;
+import com.recipe.se.recipes.domain.recipe.RecipeRepository;
+import com.recipe.se.recipes.domain.store.StoreH2DatabaseRepository;
+import com.recipe.se.recipes.domain.store.StoreRepository;
+import com.recipe.se.recipes.domain.user.UserH2DatabaseRepository;
+import com.recipe.se.recipes.domain.user.UserRepository;
 import com.recipe.se.recipes.infrastructure.recipe.h2.DatabaseRecipeRepository;
 import com.recipe.se.recipes.infrastructure.user.h2.DatabaseUserRepository;
 import com.recipe.se.recipes.infrastructure.store.h2store.DatabaseStoreRepository;

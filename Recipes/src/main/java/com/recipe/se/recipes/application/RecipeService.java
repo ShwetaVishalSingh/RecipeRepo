@@ -1,8 +1,8 @@
-package com.recipe.se.recipes.service;
+package com.recipe.se.recipes.application;
 
 
-import com.recipe.se.recipes.business.domain.exception.StoreNotFoundException;
-import com.recipe.se.recipes.business.domain.recipe.RecipeRepository;
+import com.recipe.se.recipes.domain.exception.StoreNotFoundException;
+import com.recipe.se.recipes.domain.recipe.RecipeRepository;
 import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.Paylaod;
 import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.Recipe;
 

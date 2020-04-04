@@ -1,4 +1,4 @@
-package com.recipe.se.recipes.business.domain.user;
+package com.recipe.se.recipes.domain.user;
 
 import com.recipe.se.recipes.infrastructure.user.RegistrationPayload;
 

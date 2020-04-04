@@ -1,6 +1,6 @@
-package com.recipe.se.recipes.service;
+package com.recipe.se.recipes.application;
 
-import com.recipe.se.recipes.business.domain.user.UserRepository;
+import com.recipe.se.recipes.domain.user.UserRepository;
 import com.recipe.se.recipes.infrastructure.user.RegistrationPayload;
 
 

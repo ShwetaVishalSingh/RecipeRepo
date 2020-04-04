@@ -1,7 +1,7 @@
 package com.recipe.se.recipes.infrastructure.rest;
 
 
-import com.recipe.se.recipes.service.UserService;
+import com.recipe.se.recipes.application.UserService;
 import com.recipe.se.recipes.infrastructure.user.RegistrationPayload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
