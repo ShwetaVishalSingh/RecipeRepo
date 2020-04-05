@@ -1,16 +1,34 @@
 import React from 'react';
 import './App.css';
-import Register from "./components/user/Register";
+import Header from "./components/Header";
+import About from "./components/AboutUs";
+import Home from "./components/Home";
+import Menu from "./components/Menu";
+import Team from "./components/Team";
+import Gallery from "./components/Gallery";
+import Blog from "./components/Blog";
+import Pricing from "./components/Pricing";
+import Reservation from "./components/Reservation";
+import ContactUs from "./components/ContactUs";
+import Loader from "./components/Loader";
+import ColorPannel from "./components/ColorPannel";
+
 
 const App = () => {
     return (
         <div className="App">
-            <header className="App-header">
-                <div className="App-intro">
-                    <Register/>
-
-                </div>
-            </header>
+            <Loader/>
+           <Header/>
+           <Home/>
+           <About/>
+           <Menu/>
+           <Team/>
+           <Gallery/>
+           <Blog/>
+           <Pricing/>
+           <Reservation/>
+           <ContactUs/>
+           <ColorPannel/>
         </div>
     );
 }
