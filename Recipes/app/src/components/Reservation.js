@@ -15,8 +15,8 @@ const Reservation = () => {
                             <h4 className="form-title">BOOKING FORM</h4>
                             <p>PLEASE FILL OUT ALL REQUIRED* FIELDS. THANKS!</p>
 
-                            <form id="contact-form" method="post" className="reservations-box" name="contactform"
-                                  action="mail.php">
+                           {/* <form id="contact-form" method="post" className="reservations-box" name="contactform"
+                                  action="mail.php">*/}
                                 <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div className="form-box">
                                         <input type="text" name="form_name" id="form_name" placeholder="Name"
@@ -83,7 +83,7 @@ const Reservation = () => {
                                         </button>
                                     </div>
                                 </div>
-                            </form>
+                           {/* </form>*/}
                         </div>
                     </div>
                 </div>

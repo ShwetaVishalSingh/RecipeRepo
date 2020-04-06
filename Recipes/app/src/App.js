@@ -7,7 +7,7 @@ import Menu from "./components/Menu";
 import Team from "./components/Team";
 import Gallery from "./components/Gallery";
 import Blog from "./components/Blog";
-import Pricing from "./components/Pricing";
+import SignIn from "./components/SignIn";
 import Reservation from "./components/Reservation";
 import ContactUs from "./components/ContactUs";
 import Loader from "./components/Loader";
@@ -17,7 +17,7 @@ import ColorPannel from "./components/ColorPannel";
 const App = () => {
     return (
         <div className="App">
-            <Loader/>
+           <Loader/>
            <Header/>
            <Home/>
            <About/>
@@ -25,8 +25,8 @@ const App = () => {
            <Team/>
            <Gallery/>
            <Blog/>
-           <Pricing/>
            <Reservation/>
+           <SignIn/>
            <ContactUs/>
            <ColorPannel/>
         </div>

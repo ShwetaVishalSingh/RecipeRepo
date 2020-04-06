@@ -11,6 +11,7 @@ import javax.validation.ConstraintViolationException;
 public class InvalidParameterExceptionHandler extends RuntimeException{
 
     @ExceptionHandler({ConstraintViolationException.class, MethodArgumentNotValidException.class})
+
     public ResponseEntity handleConstraintViolationException(Exception ex){
         return ResponseEntity.badRequest().body(ex.getMessage());
     }

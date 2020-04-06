@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class RegistrationPayload {
@@ -22,6 +23,8 @@ public class RegistrationPayload {
 
     @NotNull(message="Phone Number cannot be missing or empty")
     @Size(min=9, message="Phone number must not be less than 9 characters")
+
+    @Pattern(regexp = "[\\s]*[0-9]*[1-9]+",message="Please  enter digits only")
     private String phoneNumber;
 
     @JsonCreator
