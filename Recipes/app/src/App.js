@@ -12,6 +12,7 @@ import Reservation from "./components/Reservation";
 import ContactUs from "./components/ContactUs";
 import Loader from "./components/Loader";
 import ColorPannel from "./components/ColorPannel";
+import Login from "./components/Login";
 
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
            <Blog/>
            <Reservation/>
            <SignIn/>
+           <Login/>
            <ContactUs/>
            <ColorPannel/>
         </div>

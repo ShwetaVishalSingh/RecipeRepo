@@ -31,7 +31,8 @@ const Header = () => {
                                         <li><a href="#gallery">Gallery</a></li>
                                         <li><a href="#blog">Blog</a></li>
                                         <li><a href="#reservation">Reservaion</a></li>
-                                        <li><a href="#signIn">Sign In</a></li>
+                                        <li><a href="#signIn">SignIn</a>/</li>
+                                        <li><a href="#logIn">Login</a>/</li>
                                         <li><a href="#footer">Contact us</a></li>
                                     </ul>
                                 </div>

@@ -10,10 +10,10 @@ import javax.validation.constraints.Email;
 @Table(name = "USER")
 public class UserDatabase {
 
-    @Id
     @Column(name = "ID")
     private String userId;
 
+    @Id
     @Column(name = "USER_NAME")
     @Email(message = "Please enter Email in valid form")
     private String userName;

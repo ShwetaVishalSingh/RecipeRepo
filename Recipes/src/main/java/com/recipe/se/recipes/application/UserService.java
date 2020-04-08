@@ -1,6 +1,7 @@
 package com.recipe.se.recipes.application;
 
 import com.recipe.se.recipes.domain.user.UserRepository;
+import com.recipe.se.recipes.infrastructure.user.LoginDetails;
 import com.recipe.se.recipes.infrastructure.user.RegistrationPayload;
 
 
@@ -13,5 +14,9 @@ public class UserService {
 
     public void register(RegistrationPayload registrationPayload) {
         userRepository.register(registrationPayload);
+    }
+
+    public boolean login(LoginDetails payload) {
+        return userRepository.login(payload);
     }
 }
