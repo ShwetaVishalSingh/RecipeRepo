@@ -1,6 +1,7 @@
 package com.recipe.se.recipes.domain.user;
 
 import com.recipe.se.recipes.infrastructure.user.LoginDetails;
+import com.recipe.se.recipes.infrastructure.user.NewPassword;
 import com.recipe.se.recipes.infrastructure.user.RegistrationPayload;
 import com.recipe.se.recipes.infrastructure.user.h2.DatabaseUserRepository;
 import com.recipe.se.recipes.infrastructure.user.h2.UserDatabase;
@@ -21,25 +22,37 @@ public class UserH2DatabaseRepository implements UserRepository {
 
         UserDatabase user = createUserFromPayload(payload);
 
-        databaseRepository.save(user);
+         databaseRepository.save(user);
+
     }
 
     @Override
     public boolean login(LoginDetails payload) {
-       /* Optional<UserDatabase> userById = databaseRepository.findById(payload.getUserName());
+        Optional<UserDatabase> userById = databaseRepository.findById(payload.getUserName());
         if(userById.isPresent())
         {
             UserDatabase user = userById.get();
-            return user.getUserName().equals(payload.getUserName()) && useruser.getPassword().equals(payload.getPassword());
+            return user.getUserName().equals(payload.getUserName()) && user.getPassword().equals(payload.getPassword());
         }
-        return false;*/
-             Optional<UserDatabase> userById = databaseRepository.findById(payload.getUserName());
-              if(userById.isPresent())
-              {
-                 UserDatabase user = userById.get();
-                 return  user.getUserName().equals(payload.getUserName()) && user.getPassword().equals(payload.getPassword());
-              }
-              return false;
+        return false;
+    }
+
+    @Override
+    public boolean changePassword(NewPassword payload) {
+        Optional<UserDatabase> userById = databaseRepository.findById(payload.getUserName());
+        if (userById.isPresent()) {
+            UserDatabase user = userById.get();
+            if (user.getPassword().equals(payload.getOldPassword()))
+            {
+                user.setPassword(payload.getNewPassword());
+                databaseRepository.save(user);
+                return true;
+            }
+
+
+        }
+
+        return false;
     }
 
 

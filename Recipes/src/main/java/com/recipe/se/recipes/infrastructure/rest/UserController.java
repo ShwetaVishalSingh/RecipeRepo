@@ -2,8 +2,7 @@ package com.recipe.se.recipes.infrastructure.rest;
 
 
 import com.recipe.se.recipes.application.UserService;
-import com.recipe.se.recipes.infrastructure.user.LoginDetails;
-import com.recipe.se.recipes.infrastructure.user.RegistrationPayload;
+import com.recipe.se.recipes.infrastructure.user.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -25,26 +24,44 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping(value = "register")
-    public ResponseEntity register (@Valid @RequestBody RegistrationPayload registrationPayload) {
-        {
-            userService.register(registrationPayload);
-            return ResponseEntity.ok().body("User has been registered");
-        }
+    @PostMapping(value = "register", consumes = "application/json", produces = " application/json")
+    public ResponseEntity<RegistrationResponse> register (@Valid @RequestBody RegistrationPayload registrationPayload) {
 
+          userService.register(registrationPayload);
+           {
+            RegistrationResponse response = new RegistrationResponse(registrationPayload.getFirstName(), " Hey!, You are Registered Sucessfully");
+            return ResponseEntity.ok().body(response);
+           }
+         // return ResponseEntity.badRequest().body(new RegistrationResponse("", "something is fishy"));
+        //return  null;
 
     }
 
-    @PostMapping(value = "login")
-     public ResponseEntity login(@RequestBody LoginDetails payload)
+    @PostMapping(value = "login", consumes = "application/json", produces = "application/json")
+     public ResponseEntity<LoginResponse> login(@RequestBody LoginDetails payload)
     {
         boolean isSuccessfulLogin = userService.login(payload);
         if(isSuccessfulLogin){
 
-            return ResponseEntity.ok().body("Successful login");
+            LoginResponse response = new LoginResponse(payload.getUserName(), "Login Successful", "");
+            return ResponseEntity.ok().body(response);
         }else {
-            return ResponseEntity.badRequest().body("User name or Password is invalid");
+            return ResponseEntity.badRequest().body(new LoginResponse("","User name or password is not valid! Please enter valid credentials","User name or password is not valid! Please enter valild credentials"));
         }
     }
 
+    @PostMapping(value = "changePassword")
+    public ResponseEntity<ChangePasswordResponse> changePassword(@RequestBody NewPassword payload) {
+
+        if (payload.getNewPassword().equals(payload.getConfirmPassword())) {
+            boolean isSucessfulChange = userService.changePassword(payload);
+            if (isSucessfulChange) {
+                ChangePasswordResponse response = new ChangePasswordResponse("Password has been successfully changed");
+                return ResponseEntity.ok().body(response);
+            } else {
+                return ResponseEntity.badRequest().body(new ChangePasswordResponse("old password didnt match with password "));
+            }
+        }
+        return ResponseEntity.badRequest().body(new ChangePasswordResponse("enter valid password"));
+    }
 }
