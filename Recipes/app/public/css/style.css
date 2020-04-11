@@ -1454,10 +1454,22 @@ html, body{ height: 100%; }
 	background:#f5f5f5;
 	color:#202020;
 	padding:12px;
-	text-transform:capitalize;
+	text-transform:none;
 	border-radius: 4px;
 	opacity: 1;
 	min-height:54px;
+}
+
+.form-box textarea{
+    width:100%;
+    border:2px dotted #ccc;
+    background:#f5f5f5;
+    color:#202020;
+    padding:12px;
+    text-transform:none;
+    border-radius: 4px;
+    opacity: 1;
+    min-height:54px;
 }
 
 .form-box select{
