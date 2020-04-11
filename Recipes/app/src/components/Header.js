@@ -1,7 +1,13 @@
 import React from 'react';
 
-const Header = () => {
-    return(
+
+const GoToPage = (props, page) => {
+    return (
+        props.history.push(page)
+    );
+};
+const Header = (props) => {
+    return (
         <div id="site-header">
             <header id="header" className="header-block-top">
                 <div className="container">
@@ -24,16 +30,30 @@ const Header = () => {
                                 </div>
                                 <div id="navbar" className="navbar-collapse collapse">
                                     <ul className="nav navbar-nav navbar-right">
-                                        <li className="active"><a href="#banner">Home</a></li>
-                                        <li><a href="#about">About us</a></li>
-                                        <li><a href="#menu">Menu</a></li>
-                                        <li><a href="#our_team">Team</a></li>
-                                        <li><a href="#gallery">Gallery</a></li>
-                                        <li><a href="#blog">Blog</a></li>
-                                        <li><a href="#reservation">Reservaion</a></li>
-                                        <li><a href="#signIn">SignIn</a>/</li>
-                                        <li><a href="#logIn">Login</a>/</li>
-                                        <li><a href="#footer">Contact us</a></li>
+                                        <li className="active"><a  href="#" onClick={() => {GoToPage(props, "/home")}}>Home</a></li>
+                                        <li><a href="#" onClick={() => {
+                                            GoToPage(props,"/about")
+                                        }}>About us</a></li>
+                                        <li><a  href="#" onClick={() => {
+                                            GoToPage(props,"/menu")
+                                        }}>Menu</a></li>
+                                        <li><a href="#" onClick={() => {
+                                            GoToPage(props,"/team")
+                                        }}>Team</a></li>
+                                        <li><a href="#" onClick={() => {
+                                            GoToPage(props,"/gallery")
+                                        }}>Gallery</a></li>
+                                        <li><a href="#" onClick={() => {
+                                            GoToPage(props,"/blog")
+                                        }}>Blog</a></li>
+                                        <li><a href="#" onClick={() => {
+                                            GoToPage(props,"/recipe")
+                                        }}>Recipe</a></li>
+
+                                        <li><a href="#" onClick={() => {
+                                            GoToPage(props,"/contactus")
+                                        }}>Contact us</a></li>
+
                                     </ul>
                                 </div>
                             </nav>

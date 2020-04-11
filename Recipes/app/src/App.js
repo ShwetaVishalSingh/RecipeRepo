@@ -1,38 +1,50 @@
-import React from 'react';
-import './App.css';
-import Header from "./components/Header";
+import React, {Suspense} from 'react';
+import {Route, Router, Switch} from 'react-router';
+import Home from './components/Home';
+import {GetBaseRoute} from './utilis/Enviroment';
+import {createBrowserHistory} from 'history';
 import About from "./components/AboutUs";
-import Home from "./components/Home";
-import Menu from "./components/Menu";
 import Team from "./components/Team";
 import Gallery from "./components/Gallery";
-import Blog from "./components/Blog";
-import SignIn from "./components/SignIn";
-import Reservation from "./components/Reservation";
-import ContactUs from "./components/ContactUs";
-import Loader from "./components/Loader";
-import ColorPannel from "./components/ColorPannel";
+import CreateRecipe from "./components/CreateRecipe";
+import SignUp from "./components/SignUp";
 import Login from "./components/Login";
+import ContactUs from "./components/ContactUs";
+import Blog from "./components/Blog";
+import Menu from "./components/Menu";
+import ReactNotification from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
 
 
+const history = createBrowserHistory({basename: GetBaseRoute()});
+const AppRoute = ({component: Component, layout: Layout, ...rest}) => (
+    <Route {...rest} render={props => (
+        <Layout history={history}>
+            <Component history={history} {...props} />
+        </Layout>
+    )}/>
+);
 const App = () => {
     return (
-        <div className="App">
-           <Loader/>
-           <Header/>
-           <Home/>
-           <About/>
-           <Menu/>
-           <Team/>
-           <Gallery/>
-           <Blog/>
-           <Reservation/>
-           <SignIn/>
-           <Login/>
-           <ContactUs/>
-           <ColorPannel/>
-        </div>
+
+        <Router history={history}>
+            <Suspense fallback={Home}>
+                <ReactNotification />
+                <Switch>
+                        <AppRoute exact path="/" layout={Login} component={Login}/>
+                        <AppRoute exact path="/home" layout={Home} component={Home}/>
+                        <AppRoute exact path="/about" layout={About} component={About}/>
+                        <AppRoute exact path="/menu" layout={Menu} component={Menu}/>
+                        <AppRoute exact path="/team" layout={Team} component={Team}/>
+                        <AppRoute exact path="/gallery" layout={Gallery} component={Gallery}/>
+                        <AppRoute exact path="/blog" layout={Blog} component={Blog}/>
+                        <AppRoute exact path="/recipe" layout={CreateRecipe} component={CreateRecipe}/>
+                        <AppRoute exact path="/register" layout={SignUp} component={SignUp}/>
+                        <AppRoute exact path="/contactus" layout={ContactUs} component={ContactUs}/>
+                    </Switch>
+            </Suspense>
+        </Router>
+
     );
 }
-
 export default App;
