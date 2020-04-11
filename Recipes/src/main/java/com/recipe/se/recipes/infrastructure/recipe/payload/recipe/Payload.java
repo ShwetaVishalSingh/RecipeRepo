@@ -3,11 +3,11 @@ package com.recipe.se.recipes.infrastructure.recipe.payload.recipe;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Paylaod {
+public class Payload {
     private Recipe recipe;
 
     @JsonCreator
-    public Paylaod(@JsonProperty("recipe") Recipe recipe) {
+    public Payload(@JsonProperty("recipe") Recipe recipe) {
         this.recipe = recipe;
     }
 

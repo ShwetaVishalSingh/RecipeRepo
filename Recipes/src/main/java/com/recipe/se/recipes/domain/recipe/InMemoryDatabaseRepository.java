@@ -4,7 +4,7 @@ import com.recipe.se.recipes.domain.exception.RecipeNotFoundException;
 import com.recipe.se.recipes.domain.exception.StoreNotFoundException;
 import com.recipe.se.recipes.infrastructure.recipe.h2.DatabaseRecipe;
 import com.recipe.se.recipes.infrastructure.recipe.h2.DatabaseRecipeRepository;
-import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.Paylaod;
+import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.Payload;
 import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.Recipe;
 import com.recipe.se.recipes.infrastructure.store.h2store.DatabaseStore;
 import com.recipe.se.recipes.infrastructure.store.h2store.DatabaseStoreRepository;
@@ -22,14 +22,14 @@ public class InMemoryDatabaseRepository implements RecipeRepository {
     }
 
     @Override
-    public void addRecipes(Paylaod recipe) throws StoreNotFoundException {
+    public void addRecipes(Payload recipe) throws StoreNotFoundException {
         Set<DatabaseStore> databaseStores = getStoreById(recipe);
         DatabaseRecipe databaseRecipe = DatabaseRecipe.convertToDatabaseRecipe(recipe.getUserRecipe(), databaseStores);
         databaseRepository.save(databaseRecipe);
     }
 
 
-    private Set<DatabaseStore> getStoreById(Paylaod recipe) throws StoreNotFoundException {
+    private Set<DatabaseStore> getStoreById(Payload recipe) throws StoreNotFoundException {
         Set<DatabaseStore> databaseStores = new HashSet<>();
         //get all the stores from the storeId which is inside our payload
 
@@ -79,7 +79,7 @@ public class InMemoryDatabaseRepository implements RecipeRepository {
 
 
     @Override
-    public void updateRecipe(String recipeId, Paylaod paylaod) throws RecipeNotFoundException {
+    public void updateRecipe(String recipeId, Payload paylaod) throws RecipeNotFoundException {
 
         Optional<DatabaseRecipe> databaseRecipe = databaseRepository.findById(recipeId);
         if (!databaseRecipe.isPresent()) {

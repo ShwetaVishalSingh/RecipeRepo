@@ -3,7 +3,7 @@ package com.recipe.se.recipes.application;
 
 import com.recipe.se.recipes.domain.exception.StoreNotFoundException;
 import com.recipe.se.recipes.domain.recipe.RecipeRepository;
-import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.Paylaod;
+import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.Payload;
 import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.Recipe;
 
 import java.util.List;
@@ -29,11 +29,11 @@ public class RecipeService {
         recipeRepository.deleteRecipeById(recipeId);
     }
 
-    public void addRecipes(Paylaod paylaod) throws StoreNotFoundException {
+    public void addRecipes(Payload paylaod) throws StoreNotFoundException {
         recipeRepository.addRecipes(paylaod);
     }
 
-    public void updateRecipe(String recipeId, Paylaod paylaod) throws Exception {
+    public void updateRecipe(String recipeId, Payload paylaod) throws Exception {
         recipeRepository.updateRecipe(recipeId, paylaod);
     }
 

@@ -1,7 +1,8 @@
 package com.recipe.se.recipes.infrastructure.rest;
 
 import com.recipe.se.recipes.application.RecipeService;
-import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.Paylaod;
+import com.recipe.se.recipes.infrastructure.recipe.RecipeResponse;
+import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.Payload;
 import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.Recipe;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,26 +27,27 @@ public class RecipeController {
     }
 
     @GetMapping
-    public ResponseEntity getRecipes() {
+    public ResponseEntity <RecipeResponse>getRecipes() {
         List<Recipe> recipeList;
         try {
             recipeList = recipeService.fetchAllRecipies();
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something went wrong while fetching the recipe");
+            RecipeResponse response = new RecipeResponse(null,"Something went wrong");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
-        return ResponseEntity.ok(recipeList);
+        return ResponseEntity.ok(new RecipeResponse(recipeList,""));
     }
 
     @PostMapping(value = "addRecipe")
-    public ResponseEntity addRecipes(@RequestBody Paylaod paylaod) {
-        if (null == paylaod) {
-            return ResponseEntity.badRequest().body(" payload is empty");
+    public ResponseEntity<RecipeResponse> addRecipes(@RequestBody Payload payload) {
+        if (null == payload) {
+            return ResponseEntity.badRequest().body( new RecipeResponse(null,"Payload is empty"));
         }
         try {
-            recipeService.addRecipes(paylaod);
-            return ResponseEntity.ok().body("Recipe has been added");
+            recipeService.addRecipes(payload);
+            return ResponseEntity.ok().body( new RecipeResponse(null,"Recipe has been added"));
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Something went wrong" + e);
+            return ResponseEntity.badRequest().body( new RecipeResponse(null,"Something went wrong "));
         }
     }
 
@@ -73,7 +75,7 @@ public class RecipeController {
     }
 
     @PostMapping(value = "{recipeId}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity updateRecipe(@PathVariable String recipeId, @RequestBody Paylaod paylaod) {
+    public ResponseEntity updateRecipe(@PathVariable String recipeId, @RequestBody Payload paylaod) {
         if (StringUtils.isEmpty(recipeId) || null == paylaod) {
             return ResponseEntity.badRequest().body("Recipe id is null or empty");
         }
