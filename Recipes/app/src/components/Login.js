@@ -9,6 +9,10 @@ const goToRegisterPage = (props) => {
     );
 };
 
+function notImplementedYet() {
+    showNotification("Oopps!!", "Thanks for choosing the option.. we will enable this feature soon", "warning")
+}
+
 const Login = (props) => {
     const [data, setData] = useState({userName: "", password: ""});
 
@@ -107,14 +111,14 @@ const Login = (props) => {
                                                 </button>
                                                 <div className="sf-team text-col">
                                                     <ul className="team-social">
-                                                        <li><a href="#"><i className="fa fa-facebook"
+                                                        <li><a href="#" onClick={notImplementedYet}><i className="fa fa-facebook"
                                                                            aria-hidden="true"></i></a></li>
-                                                        <li><a href="#"><i className="fa fa-google-plus"
+                                                        <li><a href="#" onClick={notImplementedYet}><i className="fa fa-google-plus"
                                                                            aria-hidden="true"></i></a></li>
-                                                        <li><a href="#"><i className="fa fa-twitter"
+                                                        <li><a href="#" onClick={notImplementedYet}><i className="fa fa-twitter"
                                                                            aria-hidden="true"></i></a>
                                                         </li>
-                                                        <li><a href="#"><i className="fa fa-linkedin"
+                                                        <li><a href="#" onClick={notImplementedYet}><i className="fa fa-linkedin"
                                                                            aria-hidden="true"></i></a></li>
                                                     </ul>
                                                 </div>
