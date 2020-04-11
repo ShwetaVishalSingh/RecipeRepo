@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import {white} from "color-name";
+import showNotification from "../utilis/Notifications";
+import {postData} from "../services/Ajax";
 
 const goToRegisterPage = (props) => {
     return (
@@ -16,29 +18,18 @@ const Login = (props) => {
         data[name] = value
         setData(data);
         return true;
-    }
-    const handlePostData = () => {
-        fetch('/api/user/login', {
-            method: 'POST', // *GET, POST, PUT, DELETE, etc.
-            headers: {
-                'Content-Type': 'application/json'
-                // 'Content-Type': 'application/x-www-form-urlencoded',
-            },
-
-            body: JSON.stringify(data) // body data type must match "Content-Type" header
-        }).then(function (response) {
-            if (response.status === 200) {
-                props.history.push("/home")
-            } else {
-                alert("Something went wrong!")
-            }
-        })
-        console.log(data)
-
-    }
-    const goToForgotPassword = () => {
-        alert("forgot password")
-    }
+    };
+    const handlePostData = async (event) => {
+        event.preventDefault();
+        const response = await postData("/api/user/login", data);
+        const result = await response.json();
+        if (response.status === 200) {
+            props.history.push("/home")
+            showNotification("Login Successful", result.message, "success")
+        } else {
+            showNotification("Error", result.message, "danger")
+        }
+    };
 
     return (
         <div>
@@ -65,7 +56,11 @@ const Login = (props) => {
                                     <div id="navbar" className="navbar-collapse collapse">
                                         <ul className="nav navbar-nav navbar-right">
                                             <div className="reserve-book-btn text-center">
-                                                <button className="hvr-underline-from-center" type="button" onClick={() => {goToRegisterPage(props)}}>Sign Up </button>
+                                                <button className="hvr-underline-from-center" type="button"
+                                                        onClick={() => {
+                                                            goToRegisterPage(props)
+                                                        }}>Sign Up
+                                                </button>
                                             </div>
                                         </ul>
                                     </div>
@@ -88,42 +83,45 @@ const Login = (props) => {
                                         </h2>
                                     </div>
 
-                                    {/*<form onSubmit={postData} className="reservations-box"
-                                  name="registrationForm">*/}
-                                    <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <div className="form-box">
-                                            <input type="email" onChange={handleInputChange} name="userName"
-                                                   id="userName"
-                                                   placeholder="E-Mail ID"
-                                                   required="required" data-error="E-mail id is required."/>
+                                    <form onSubmit={handlePostData} className="reservations-box"
+                                          name="loginForm">
+                                        <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <div className="form-box">
+                                                <input type="email" onChange={handleInputChange} name="userName"
+                                                       id="userName"
+                                                       placeholder="E-Mail ID"
+                                                       required="required" data-error="E-mail id is required."/>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <div className="form-box">
-                                            <input type="password" onChange={handleInputChange} name="password"
-                                                   id="phoneNumber" placeholder="Password"
-                                                   required="required" data-error="Password is required."/>
+                                        <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <div className="form-box">
+                                                <input type="password" onChange={handleInputChange} name="password"
+                                                       id="phoneNumber" placeholder="Password"
+                                                       required="required" data-error="Password is required."/>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <div className="reserve-book-btn text-center">
-                                            <button className="hvr-underline-from-center" type="submit" onClick={handlePostData}>SUBMIT
-                                            </button>
+                                        <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div className="reserve-book-btn text-center">
+                                                <button className="hvr-underline-from-center" type="submit">SUBMIT
+                                                </button>
                                                 <div className="sf-team text-col">
                                                     <ul className="team-social">
-                                                        <li ><a href="#"><i className="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                                        <li ><a href="#"><i className="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                                                        <li><a href="#"><i className="fa fa-twitter" aria-hidden="true"></i></a>
+                                                        <li><a href="#"><i className="fa fa-facebook"
+                                                                           aria-hidden="true"></i></a></li>
+                                                        <li><a href="#"><i className="fa fa-google-plus"
+                                                                           aria-hidden="true"></i></a></li>
+                                                        <li><a href="#"><i className="fa fa-twitter"
+                                                                           aria-hidden="true"></i></a>
                                                         </li>
                                                         <li><a href="#"><i className="fa fa-linkedin"
                                                                            aria-hidden="true"></i></a></li>
                                                     </ul>
                                                 </div>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    {/*</form>*/}
+                                    </form>
                                 </div>
                             </div>
                         </div>

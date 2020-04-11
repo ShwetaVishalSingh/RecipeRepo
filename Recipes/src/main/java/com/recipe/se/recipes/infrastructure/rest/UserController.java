@@ -29,11 +29,9 @@ public class UserController {
 
           userService.register(registrationPayload);
            {
-            RegistrationResponse response = new RegistrationResponse(registrationPayload.getFirstName(), " Hey!, You are Registered Sucessfully");
+            RegistrationResponse response = new RegistrationResponse(registrationPayload.getFirstName(), " Hello "+registrationPayload.getFirstName() + "!, You are Registered Successfully");
             return ResponseEntity.ok().body(response);
            }
-         // return ResponseEntity.badRequest().body(new RegistrationResponse("", "something is fishy"));
-        //return  null;
 
     }
 
@@ -43,10 +41,10 @@ public class UserController {
         boolean isSuccessfulLogin = userService.login(payload);
         if(isSuccessfulLogin){
 
-            LoginResponse response = new LoginResponse(payload.getUserName(), "Login Successful", "");
+            LoginResponse response = new LoginResponse(payload.getUserName(), "Welcome! " +payload.getUserName(), "");
             return ResponseEntity.ok().body(response);
         }else {
-            return ResponseEntity.badRequest().body(new LoginResponse("","User name or password is not valid! Please enter valid credentials","User name or password is not valid! Please enter valild credentials"));
+            return ResponseEntity.badRequest().body(new LoginResponse("","User name or password is not valid! Please enter valid credentials","User name or password is not valid! Please enter valid credentials"));
         }
     }
 
