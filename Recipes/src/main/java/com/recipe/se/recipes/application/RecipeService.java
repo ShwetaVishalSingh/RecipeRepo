@@ -3,8 +3,8 @@ package com.recipe.se.recipes.application;
 
 import com.recipe.se.recipes.domain.exception.StoreNotFoundException;
 import com.recipe.se.recipes.domain.recipe.RecipeRepository;
-import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.Payload;
-import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.Recipe;
+import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.RecipeDetails;
+import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.RecipeModel;
 
 import java.util.List;
 
@@ -16,11 +16,11 @@ public class RecipeService {
         this.recipeRepository = recipeRepository;
     }
 
-    public List<Recipe> fetchAllRecipies() throws Exception {
+    public List<RecipeModel> fetchAllRecipes() throws Exception {
        return recipeRepository.fetchAllRecipes();
     }
 
-    public Recipe fetchRecipeById(String recipeId) throws Exception {
+    public RecipeModel fetchRecipeById(String recipeId) throws Exception {
        return recipeRepository.fetchRecipeById(recipeId);
     }
 
@@ -29,19 +29,19 @@ public class RecipeService {
         recipeRepository.deleteRecipeById(recipeId);
     }
 
-    public void addRecipes(Payload paylaod) throws StoreNotFoundException {
-        recipeRepository.addRecipes(paylaod);
+    public void addRecipes(RecipeDetails recipeDetails) throws StoreNotFoundException {
+        recipeRepository.addRecipes(recipeDetails);
     }
 
-    public void updateRecipe(String recipeId, Payload paylaod) throws Exception {
-        recipeRepository.updateRecipe(recipeId, paylaod);
+    public void updateRecipe(String recipeId, RecipeDetails recipeDetails) throws Exception {
+        recipeRepository.updateRecipe(recipeId, recipeDetails);
     }
 
-    public List < Recipe> fetchByStore(String storeId) {
+    public List <RecipeModel> fetchByStore(String storeId) {
          return recipeRepository.fetchByStore(storeId);
     }
 
-    public List<Recipe> findRecipeBy(String searchTerm) {
+    public List<RecipeModel> findRecipeBy(String searchTerm) {
        return recipeRepository.findRecipeBy(searchTerm);
 
     }

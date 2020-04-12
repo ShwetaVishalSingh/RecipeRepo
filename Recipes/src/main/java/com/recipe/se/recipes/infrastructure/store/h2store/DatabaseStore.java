@@ -1,10 +1,11 @@
 package com.recipe.se.recipes.infrastructure.store.h2store;
 
-import com.recipe.se.recipes.infrastructure.recipe.h2.DatabaseRecipe;
 import com.recipe.se.recipes.infrastructure.store.Store;
 
-import javax.persistence.*;
-import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "STORE")
@@ -23,8 +24,6 @@ public class DatabaseStore {
     private String storeOwner;
 
 
-    @ManyToMany(mappedBy="databaseStores")
-    private Set<DatabaseRecipe> databaseRecipes;
 
     public DatabaseStore() {
     }
@@ -47,14 +46,6 @@ public class DatabaseStore {
                 storePayload.getStoreName(),
                 storePayload.getStoreCity(),
                 storePayload.getStoreOwner());
-    }
-
-    public Set<DatabaseRecipe> getDatabaseRecipes() {
-        return databaseRecipes;
-    }
-
-    public void setDatabaseRecipes(Set<DatabaseRecipe> databaseRecipes) {
-        this.databaseRecipes = databaseRecipes;
     }
 
     public void setStoreId(String storeId) {

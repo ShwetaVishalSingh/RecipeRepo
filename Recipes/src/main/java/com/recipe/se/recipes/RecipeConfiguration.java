@@ -3,7 +3,7 @@ package com.recipe.se.recipes;
 import com.recipe.se.recipes.application.RecipeService;
 import com.recipe.se.recipes.application.StoreService;
 import com.recipe.se.recipes.application.UserService;
-import com.recipe.se.recipes.domain.recipe.InMemoryDatabaseRepository;
+import com.recipe.se.recipes.domain.recipe.H2FileRecipeRepository;
 import com.recipe.se.recipes.domain.recipe.RecipeRepository;
 import com.recipe.se.recipes.domain.store.StoreH2DatabaseRepository;
 import com.recipe.se.recipes.domain.store.StoreRepository;
@@ -23,7 +23,7 @@ public class RecipeConfiguration {
     private UserService userService;
 
     public RecipeConfiguration(DatabaseRecipeRepository databaseRepository, DatabaseStoreRepository databaseStoreRepository, DatabaseUserRepository databaseUserRepository) {
-        RecipeRepository recipeRepository = new InMemoryDatabaseRepository(databaseRepository, databaseStoreRepository);
+        RecipeRepository recipeRepository = new H2FileRecipeRepository(databaseRepository, databaseStoreRepository);
         StoreRepository storeRepository = new StoreH2DatabaseRepository(databaseStoreRepository);
         UserRepository userRepository = new UserH2DatabaseRepository(databaseUserRepository);
 
