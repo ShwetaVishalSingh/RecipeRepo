@@ -1,23 +1,24 @@
 package com.recipe.se.recipes.infrastructure.recipe;
 
-import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.Recipe;
+import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.RecipeModel;
 
 import java.util.List;
 
 public class RecipeResponse {
-    List<Recipe> recipeList;
+    List<RecipeModel> recipeList;
     private String message;
 
-    public RecipeResponse(List<Recipe> recipeList, String message) {
+
+    public RecipeResponse(List<RecipeModel> recipeList, String message) {
         this.recipeList = recipeList;
         this.message = message;
     }
 
-    public List<Recipe> getRecipeList() {
+    public List<RecipeModel> getRecipeList() {
         return recipeList;
     }
 
-    public void setRecipeList(List<Recipe> recipeList) {
+    public void setRecipeList(List<RecipeModel> recipeList) {
         this.recipeList = recipeList;
     }
 

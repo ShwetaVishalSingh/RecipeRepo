@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface DatabaseRecipeRepository extends CrudRepository<DatabaseRecipe, String> {
+public interface DatabaseRecipeRepository extends CrudRepository<Recipe, String> {
     @Query(value = "SELECT * FROM RECIPE rp WHERE rp.RECIPE_NAME LIKE %?1%", nativeQuery = true)
-   List<DatabaseRecipe> findByName(String searchTerm);
+   List<Recipe> findByName(String searchTerm);
 }

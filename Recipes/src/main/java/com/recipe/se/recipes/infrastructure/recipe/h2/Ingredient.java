@@ -23,16 +23,16 @@ public class Ingredient implements Serializable {
     private String unit;
 
     @ManyToOne
-    private DatabaseRecipe recipe;
+    private Recipe recipe;
 
     public Ingredient() {
     }
 
-    public DatabaseRecipe getRecipe() {
+    public Recipe getRecipe() {
         return recipe;
     }
 
-    public void setRecipe(DatabaseRecipe recipe) {
+    public void setRecipe(Recipe recipe) {
         this.recipe = recipe;
     }
 
