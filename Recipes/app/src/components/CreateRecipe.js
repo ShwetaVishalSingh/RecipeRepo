@@ -55,13 +55,13 @@ const CreateRecipe = (props) => {
 
                                         <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <div className="form-box">
-                                                <textarea type="text" name="portion" placeholder="Cooking step"
+                                                <textarea type="text" name="cookingStep" placeholder="Cooking step"
                                                           required="required" data-error="Please tell us how to cook."/>
                                             </div>
                                         </div>
                                         <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <div className="form-box">
-                                                <textarea type="text" name="portion"
+                                                <textarea type="text" name="ingredients"
                                                           placeholder="Please enter comma separate list of ingredients."
                                                           required="required"
                                                           data-error="Please enter comma separate list of ingredients."/>
