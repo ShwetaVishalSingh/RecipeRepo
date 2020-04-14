@@ -6,17 +6,18 @@ import com.recipe.se.recipes.infrastructure.recipe.h2.DatabaseRecipeRepository;
 import com.recipe.se.recipes.infrastructure.recipe.h2.Recipe;
 import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.RecipeDetails;
 import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.RecipeModel;
-import com.recipe.se.recipes.infrastructure.store.h2store.DatabaseStore;
-import com.recipe.se.recipes.infrastructure.store.h2store.DatabaseStoreRepository;
+import com.recipe.se.recipes.infrastructure.seller.h2store.Seller;
+import com.recipe.se.recipes.infrastructure.seller.h2store.DatabaseSellerRepository;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.*;
 
 public class H2FileRecipeRepository implements RecipeRepository {
 
     private final DatabaseRecipeRepository databaseRepository;
-    private final DatabaseStoreRepository databaseStoreRepository;
+    private final DatabaseSellerRepository databaseStoreRepository;
 
-    public H2FileRecipeRepository(DatabaseRecipeRepository databaseRepository, DatabaseStoreRepository databaseStoreRepository) {
+    public H2FileRecipeRepository(DatabaseRecipeRepository databaseRepository, DatabaseSellerRepository databaseStoreRepository) {
         this.databaseRepository = databaseRepository;
         this.databaseStoreRepository = databaseStoreRepository;
     }
@@ -29,8 +30,8 @@ public class H2FileRecipeRepository implements RecipeRepository {
     }
 
 
-    private Set<DatabaseStore> getStoreById(RecipeDetails recipe) throws StoreNotFoundException {
-        Set<DatabaseStore> databaseStores = new HashSet<>();
+    private Set<Seller> getStoreById(RecipeDetails recipe) throws StoreNotFoundException {
+        Set<Seller> databaseStores = new HashSet<>();
         //get all the stores from the storeId which is inside our payload
 
         Set<String> storeIds = Collections.emptySet();
@@ -38,7 +39,7 @@ public class H2FileRecipeRepository implements RecipeRepository {
         //iterate all the storeId and fetch all the store based on storeId
         for (String storeId : storeIds) {
 
-            Optional<DatabaseStore> store = databaseStoreRepository.findById(storeId);
+            Optional<Seller> store = databaseStoreRepository.findById(storeId);
             if (!store.isPresent()) {
                 throw new StoreNotFoundException("Store is not available");
             }
@@ -99,18 +100,7 @@ public class H2FileRecipeRepository implements RecipeRepository {
 
     @Override
     public List<RecipeModel> fetchByStore(String storeId) {
-        List<RecipeModel> recipes = new ArrayList<>();
-        Iterable<Recipe> databaseRecipes = databaseRepository.findAll();
-        for (Recipe databaseRecipe : databaseRecipes) {
-            Set<DatabaseStore> databaseStores = Collections.emptySet();
-            for (DatabaseStore databaseStore : databaseStores)
-                if (databaseStore.getStoreId().equals(storeId)) {
-                    //recipes.add(RecipeModel.convertToRecipe(databaseRecipe));
-                }
-
-
-        }
-        return recipes;
+        throw new NotImplementedException();
 
     }
 

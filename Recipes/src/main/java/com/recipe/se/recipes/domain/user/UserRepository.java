@@ -3,10 +3,11 @@ package com.recipe.se.recipes.domain.user;
 import com.recipe.se.recipes.infrastructure.user.LoginDetails;
 import com.recipe.se.recipes.infrastructure.user.NewPassword;
 import com.recipe.se.recipes.infrastructure.user.RegistrationPayload;
+import com.recipe.se.recipes.infrastructure.user.RegistrationModel;
 
 public interface UserRepository {
 
- void register(RegistrationPayload registrationPayload);
+ RegistrationModel register(RegistrationPayload registrationPayload, String customerType);
 
  boolean login(LoginDetails payload);
 

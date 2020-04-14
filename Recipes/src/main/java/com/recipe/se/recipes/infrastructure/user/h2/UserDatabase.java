@@ -28,16 +28,28 @@ public class UserDatabase {
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
 
+    @Column(name = "TYPE")
+    private String type;
+
     public UserDatabase() {
     }
 
-    public UserDatabase(String userId, String userName, String password, String firstName, String lastName, String phoneNumber) {
+    public UserDatabase(String userId, String userName, String password, String firstName, String lastName, String phoneNumber, String type) {
         this.userId = userId;
         this.userName = userName;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getUserId() {
