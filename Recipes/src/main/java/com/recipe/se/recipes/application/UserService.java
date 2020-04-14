@@ -4,6 +4,7 @@ import com.recipe.se.recipes.domain.user.UserRepository;
 import com.recipe.se.recipes.infrastructure.user.LoginDetails;
 import com.recipe.se.recipes.infrastructure.user.NewPassword;
 import com.recipe.se.recipes.infrastructure.user.RegistrationPayload;
+import com.recipe.se.recipes.infrastructure.user.RegistrationModel;
 
 
 public class UserService {
@@ -14,9 +15,9 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public void register(RegistrationPayload registrationPayload)
+    public RegistrationModel register(RegistrationPayload registrationPayload, String customerType)
     {
-         userRepository.register(registrationPayload);
+        return userRepository.register(registrationPayload, customerType);
     }
 
     public boolean login(LoginDetails payload)

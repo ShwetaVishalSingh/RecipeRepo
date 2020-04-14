@@ -3,6 +3,7 @@ package com.recipe.se.recipes.domain.user;
 import com.recipe.se.recipes.infrastructure.user.LoginDetails;
 import com.recipe.se.recipes.infrastructure.user.NewPassword;
 import com.recipe.se.recipes.infrastructure.user.RegistrationPayload;
+import com.recipe.se.recipes.infrastructure.user.RegistrationModel;
 import com.recipe.se.recipes.infrastructure.user.h2.DatabaseUserRepository;
 import com.recipe.se.recipes.infrastructure.user.h2.UserDatabase;
 
@@ -18,11 +19,13 @@ public class UserH2DatabaseRepository implements UserRepository {
     }
 
     @Override
-    public void register(RegistrationPayload payload) {
+    public RegistrationModel register(RegistrationPayload payload, String customerType) {
 
-        UserDatabase user = createUserFromPayload(payload);
-
+        UserDatabase user = createUserFromPayload(payload,customerType);
          databaseRepository.save(user);
+
+        UserDatabase result = databaseRepository.findById(payload.getUserName()).get();
+        return new RegistrationModel(result.getUserId(),result.getFirstName(),result.getLastName(),result.getUserName(),result.getPhoneNumber());
 
     }
 
@@ -56,9 +59,9 @@ public class UserH2DatabaseRepository implements UserRepository {
     }
 
 
-    private UserDatabase createUserFromPayload(RegistrationPayload payload) {
+    private UserDatabase createUserFromPayload(RegistrationPayload payload, String customerType) {
         return new UserDatabase(UUID.randomUUID().toString(), payload.getUserName(), payload.getPassword(),
-                payload.getFirstName(),payload.getLastName(),payload.getPhoneNumber());
+                payload.getFirstName(),payload.getLastName(),payload.getPhoneNumber(), customerType);
     }
 }
 

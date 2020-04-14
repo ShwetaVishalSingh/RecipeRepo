@@ -5,7 +5,7 @@ import com.recipe.se.recipes.domain.recipe.H2FileRecipeRepository;
 import com.recipe.se.recipes.infrastructure.recipe.h2.Recipe;
 import com.recipe.se.recipes.infrastructure.recipe.h2.DatabaseRecipeRepository;
 import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.RecipeModel;
-import com.recipe.se.recipes.infrastructure.store.h2store.DatabaseStoreRepository;
+import com.recipe.se.recipes.infrastructure.seller.h2store.DatabaseSellerRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -24,7 +24,7 @@ class InMemoryDatabaseRepositoryTest {
 
         String recipeId = "123";
         DatabaseRecipeRepository recipeRepository = mock(DatabaseRecipeRepository.class);
-        DatabaseStoreRepository storeRepository = mock(DatabaseStoreRepository.class);
+        DatabaseSellerRepository storeRepository = mock(DatabaseSellerRepository.class);
 
 
         //given(recipeRepository.findById(recipeId)).willReturn(Optional.of(new DatabaseRecipe("123", "abc", "1", Collections.emptySet(), Collections.emptySet())));
@@ -43,7 +43,7 @@ class InMemoryDatabaseRepositoryTest {
 
         String recipeId = "123";
         DatabaseRecipeRepository recipeRepository = mock(DatabaseRecipeRepository.class);
-        DatabaseStoreRepository storeRepository = mock(DatabaseStoreRepository.class);
+        DatabaseSellerRepository storeRepository = mock(DatabaseSellerRepository.class);
 
 
         given(recipeRepository.findById(recipeId)).willReturn(Optional.empty());

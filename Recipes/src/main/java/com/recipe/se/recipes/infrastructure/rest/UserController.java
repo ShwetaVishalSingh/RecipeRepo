@@ -25,13 +25,20 @@ public class UserController {
     }
 
     @PostMapping(value = "register", consumes = "application/json", produces = " application/json")
-    public ResponseEntity<RegistrationResponse> register (@Valid @RequestBody RegistrationPayload registrationPayload) {
+    public ResponseEntity<RegistrationModel> register (@Valid @RequestBody RegistrationPayload registrationPayload) {
 
-          userService.register(registrationPayload);
-           {
-            RegistrationResponse response = new RegistrationResponse(registrationPayload.getFirstName(), " Hello "+registrationPayload.getFirstName() + "!, You are Registered Successfully");
-            return ResponseEntity.ok().body(response);
-           }
+        RegistrationModel response = userService.register(registrationPayload, CustomerType.CUSTOMER.name());
+        return ResponseEntity.ok().body(response);
+
+
+    }
+    @PostMapping(value = "register/seller", consumes = "application/json", produces = " application/json")
+    public ResponseEntity<RegistrationModel> registerSeller (@Valid @RequestBody RegistrationPayload registrationPayload) {
+
+        RegistrationModel response = userService.register(registrationPayload, CustomerType.SELLER.name());
+        return ResponseEntity.ok().body(response);
+
+
 
     }
 
