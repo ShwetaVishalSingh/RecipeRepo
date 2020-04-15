@@ -1,40 +1,39 @@
-package com.recipe.se.recipes.domain.user;
+package com.recipe.se.recipes.domain.repository;
 
+import com.recipe.se.recipes.domain.user.User;
 import com.recipe.se.recipes.infrastructure.user.LoginDetails;
 import com.recipe.se.recipes.infrastructure.user.NewPassword;
 import com.recipe.se.recipes.infrastructure.user.RegistrationPayload;
 import com.recipe.se.recipes.infrastructure.user.RegistrationModel;
-import com.recipe.se.recipes.infrastructure.user.h2.DatabaseUserRepository;
-import com.recipe.se.recipes.infrastructure.user.h2.UserDatabase;
 
 import java.util.Optional;
 import java.util.UUID;
 
-public class UserH2DatabaseRepository implements UserRepository {
+public class UserDbRepository implements UserRepository {
 
-    private final DatabaseUserRepository databaseRepository;
+    private final CrudUserRepository crudUserRepository;
 
-    public UserH2DatabaseRepository(DatabaseUserRepository databaseRepository) {
-        this.databaseRepository = databaseRepository;
+    public UserDbRepository(CrudUserRepository crudUserRepository) {
+        this.crudUserRepository = crudUserRepository;
     }
 
     @Override
     public RegistrationModel register(RegistrationPayload payload, String customerType) {
 
-        UserDatabase user = createUserFromPayload(payload,customerType);
-         databaseRepository.save(user);
+        User user = createUserFromPayload(payload,customerType);
+        crudUserRepository.save(user);
 
-        UserDatabase result = databaseRepository.findById(payload.getUserName()).get();
+        User result = crudUserRepository.findById(payload.getUserName()).get();
         return new RegistrationModel(result.getUserId(),result.getFirstName(),result.getLastName(),result.getUserName(),result.getPhoneNumber());
 
     }
 
     @Override
     public boolean login(LoginDetails payload) {
-        Optional<UserDatabase> userById = databaseRepository.findById(payload.getUserName());
+        Optional<User> userById = crudUserRepository.findById(payload.getUserName());
         if(userById.isPresent())
         {
-            UserDatabase user = userById.get();
+            User user = userById.get();
             return user.getUserName().equals(payload.getUserName()) && user.getPassword().equals(payload.getPassword());
         }
         return false;
@@ -42,13 +41,13 @@ public class UserH2DatabaseRepository implements UserRepository {
 
     @Override
     public boolean changePassword(NewPassword payload) {
-        Optional<UserDatabase> userById = databaseRepository.findById(payload.getUserName());
+        Optional<User> userById = crudUserRepository.findById(payload.getUserName());
         if (userById.isPresent()) {
-            UserDatabase user = userById.get();
+            User user = userById.get();
             if (user.getPassword().equals(payload.getOldPassword()))
             {
                 user.setPassword(payload.getNewPassword());
-                databaseRepository.save(user);
+                crudUserRepository.save(user);
                 return true;
             }
 
@@ -59,8 +58,8 @@ public class UserH2DatabaseRepository implements UserRepository {
     }
 
 
-    private UserDatabase createUserFromPayload(RegistrationPayload payload, String customerType) {
-        return new UserDatabase(UUID.randomUUID().toString(), payload.getUserName(), payload.getPassword(),
+    private User createUserFromPayload(RegistrationPayload payload, String customerType) {
+        return new User(UUID.randomUUID().toString(), payload.getUserName(), payload.getPassword(),
                 payload.getFirstName(),payload.getLastName(),payload.getPhoneNumber(), customerType);
     }
 }

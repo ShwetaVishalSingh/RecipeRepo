@@ -2,7 +2,7 @@ package com.recipe.se.recipes.infrastructure.seller;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.recipe.se.recipes.infrastructure.seller.h2store.Seller;
+import com.recipe.se.recipes.domain.seller.Seller;
 import org.apache.catalina.Store;
 
 public class SellerDetails {

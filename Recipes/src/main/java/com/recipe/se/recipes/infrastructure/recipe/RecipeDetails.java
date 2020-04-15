@@ -1,34 +1,38 @@
-package com.recipe.se.recipes.infrastructure.recipe.payload.recipe;
+package com.recipe.se.recipes.infrastructure.recipe;
 
-import com.recipe.se.recipes.infrastructure.recipe.h2.Recipe;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.recipe.se.recipes.infrastructure.recipe.Ingredient;
 
-public class RecipeModel {
-    private String id;
+import java.util.HashSet;
+import java.util.Set;
+
+public class RecipeDetails {
     private String recipeName;
     private int portion;
     private String ingredients;
     private String cookingStep;
     private String image;
     private String description;
+    private String type;
 
-    public RecipeModel(String id, String recipeName, int portion, String ingredients, String cookingStep, String image, String description) {
-        this.id = id;
+
+    @JsonCreator
+    public RecipeDetails(@JsonProperty("recipeName") String recipeName,
+                         @JsonProperty("portion") int portion,
+                         @JsonProperty("ingredients") String ingredients,
+                         @JsonProperty("cookingStep") String cookingStep,
+                         @JsonProperty("recipeImage") String image,
+                         @JsonProperty("description") String description,
+                         @JsonProperty("type") String type) {
+
         this.recipeName = recipeName;
         this.portion = portion;
         this.ingredients = ingredients;
         this.cookingStep = cookingStep;
-        this.image = image;
         this.description = description;
-    }
-
-    public static RecipeModel convertToRecipe(Recipe recipe) {
-        return new RecipeModel(recipe.getRecipeId(),
-                recipe.getName(),
-                recipe.getPortion(),
-                recipe.getIngredients(),
-                recipe.getSteps(),
-                recipe.getImage(),
-                recipe.getDescription());
+        this.image = image;
+        this.type = type;
     }
 
     public String getRecipeName() {
@@ -79,23 +83,24 @@ public class RecipeModel {
         this.description = description;
     }
 
-    public String getId() {
-        return id;
+    public String getType() {
+        return type;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override
     public String toString() {
-        return "Recipe{" +
+        return "RecipeDetails{" +
                 "recipeName='" + recipeName + '\'' +
                 ", portion=" + portion +
                 ", ingredients='" + ingredients + '\'' +
                 ", cookingStep='" + cookingStep + '\'' +
                 ", image='" + image + '\'' +
                 ", description='" + description + '\'' +
+                ", type='" + type + '\'' +
                 '}';
     }
 }

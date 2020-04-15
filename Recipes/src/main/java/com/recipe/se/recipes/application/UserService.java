@@ -1,6 +1,6 @@
 package com.recipe.se.recipes.application;
 
-import com.recipe.se.recipes.domain.user.UserRepository;
+import com.recipe.se.recipes.domain.repository.UserRepository;
 import com.recipe.se.recipes.infrastructure.user.LoginDetails;
 import com.recipe.se.recipes.infrastructure.user.NewPassword;
 import com.recipe.se.recipes.infrastructure.user.RegistrationPayload;

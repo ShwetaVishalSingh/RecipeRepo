@@ -1,4 +1,4 @@
-package com.recipe.se.recipes.domain.user;
+package com.recipe.se.recipes.domain.repository;
 
 import com.recipe.se.recipes.infrastructure.user.LoginDetails;
 import com.recipe.se.recipes.infrastructure.user.NewPassword;

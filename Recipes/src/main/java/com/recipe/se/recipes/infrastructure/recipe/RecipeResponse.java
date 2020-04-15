@@ -1,7 +1,5 @@
 package com.recipe.se.recipes.infrastructure.recipe;
 
-import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.RecipeModel;
-
 import java.util.List;
 
 public class RecipeResponse {

@@ -1,48 +1,35 @@
-package com.recipe.se.recipes.infrastructure.recipe.payload.recipe;
+package com.recipe.se.recipes.infrastructure.recipe;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.recipe.se.recipes.domain.recipe.Recipe;
 
-import java.util.HashSet;
-import java.util.Set;
-
-public class RecipeDetails {
+public class RecipeModel {
+    private String id;
     private String recipeName;
     private int portion;
     private String ingredients;
     private String cookingStep;
     private String image;
     private String description;
-    private String type;
 
-
-    @JsonCreator
-    public RecipeDetails(@JsonProperty("recipeName") String recipeName,
-                         @JsonProperty("portion") int portion,
-                         @JsonProperty("ingredients") String ingredients,
-                         @JsonProperty("cookingStep") String cookingStep,
-                         @JsonProperty("recipeImage") String image,
-                         @JsonProperty("description") String description,
-                         @JsonProperty("type") String type) {
-
+    public RecipeModel(String id, String recipeName, int portion, String ingredients, String cookingStep, String image, String description) {
+        this.id = id;
         this.recipeName = recipeName;
         this.portion = portion;
         this.ingredients = ingredients;
         this.cookingStep = cookingStep;
-        this.description = description;
         this.image = image;
-        this.type = type;
+        this.description = description;
     }
 
-
-    private static Set<Ingredient> convertIngredientsToUserIngredients(Set<com.recipe.se.recipes.infrastructure.recipe.h2.Ingredient> ingredients) {
-        Set<Ingredient> ingredientSet = new HashSet<>();
-        for (com.recipe.se.recipes.infrastructure.recipe.h2.Ingredient ingredient : ingredients) {
-            ingredientSet.add(new Ingredient(ingredient.getId(), ingredient.getName(), ingredient.getAmount(), ingredient.getUnit()));
-        }
-        return ingredientSet;
+    public static RecipeModel convertToRecipe(Recipe recipe) {
+        return new RecipeModel(recipe.getRecipeId(),
+                recipe.getName(),
+                recipe.getPortion(),
+                recipe.getIngredients(),
+                recipe.getSteps(),
+                recipe.getImage(),
+                recipe.getDescription());
     }
-
 
     public String getRecipeName() {
         return recipeName;
@@ -92,24 +79,23 @@ public class RecipeDetails {
         this.description = description;
     }
 
-    public String getType() {
-        return type;
+    public String getId() {
+        return id;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setId(String id) {
+        this.id = id;
     }
 
     @Override
     public String toString() {
-        return "RecipeDetails{" +
+        return "Recipe{" +
                 "recipeName='" + recipeName + '\'' +
                 ", portion=" + portion +
                 ", ingredients='" + ingredients + '\'' +
                 ", cookingStep='" + cookingStep + '\'' +
                 ", image='" + image + '\'' +
                 ", description='" + description + '\'' +
-                ", type='" + type + '\'' +
                 '}';
     }
 }

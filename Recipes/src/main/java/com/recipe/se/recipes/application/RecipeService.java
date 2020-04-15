@@ -2,9 +2,9 @@ package com.recipe.se.recipes.application;
 
 
 import com.recipe.se.recipes.domain.exception.StoreNotFoundException;
-import com.recipe.se.recipes.domain.recipe.RecipeRepository;
-import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.RecipeDetails;
-import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.RecipeModel;
+import com.recipe.se.recipes.domain.repository.RecipeRepository;
+import com.recipe.se.recipes.infrastructure.recipe.RecipeDetails;
+import com.recipe.se.recipes.infrastructure.recipe.RecipeModel;
 
 import java.util.List;
 

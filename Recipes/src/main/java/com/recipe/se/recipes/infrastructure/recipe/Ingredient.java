@@ -1,4 +1,4 @@
-package com.recipe.se.recipes.infrastructure.recipe.payload.recipe;
+package com.recipe.se.recipes.infrastructure.recipe;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

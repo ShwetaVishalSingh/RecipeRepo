@@ -1,6 +1,6 @@
 package com.recipe.se.recipes.application;
 
-import com.recipe.se.recipes.domain.store.SellerRepository;
+import com.recipe.se.recipes.domain.repository.SellerRepository;
 import com.recipe.se.recipes.infrastructure.seller.SellerDetails;
 import com.recipe.se.recipes.infrastructure.seller.SellerModel;
 
