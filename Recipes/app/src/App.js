@@ -7,13 +7,16 @@ import About from "./components/AboutUs";
 import Team from "./components/Team";
 import Gallery from "./components/Gallery";
 import CreateRecipe from "./components/CreateRecipe";
-import SignUp from "./components/SignUp";
+import Register from "./components/Register";
 import Login from "./components/Login";
 import ContactUs from "./components/ContactUs";
 import Blog from "./components/Blog";
 import Menu from "./components/Menu";
 import ReactNotification from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
+import Recipes from "./components/Recipes";
+import AddSeller from "./components/AddSeller";
+import RegisterBusinessUser from "./components/RegisterBusinessUser";
 
 
 const history = createBrowserHistory({basename: GetBaseRoute()});
@@ -38,8 +41,11 @@ const App = () => {
                         <AppRoute exact path="/team" layout={Team} component={Team}/>
                         <AppRoute exact path="/gallery" layout={Gallery} component={Gallery}/>
                         <AppRoute exact path="/blog" layout={Blog} component={Blog}/>
-                        <AppRoute exact path="/recipe" layout={CreateRecipe} component={CreateRecipe}/>
-                        <AppRoute exact path="/register" layout={SignUp} component={SignUp}/>
+                        <AppRoute exact path="/recipe" layout={Recipes} component={Recipes}/>
+                        <AppRoute exact path="/createRecipe" layout={CreateRecipe} component={CreateRecipe}/>
+                        <AppRoute exact path="/createStore" layout={AddSeller} component={AddSeller}/>
+                        <AppRoute exact path="/register" layout={Register} component={Register}/>
+                        <AppRoute exact path="/registerBusinessUser" layout={RegisterBusinessUser} component={RegisterBusinessUser}/>
                         <AppRoute exact path="/contactus" layout={ContactUs} component={ContactUs}/>
                     </Switch>
             </Suspense>

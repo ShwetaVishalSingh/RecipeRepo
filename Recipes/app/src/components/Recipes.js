@@ -1,7 +1,28 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Header from "./Header";
+import {getData} from "../services/Ajax";
+
 
 const Recipes = (props) => {
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await getData(
+                '/api/recipe/'
+            );
+            const result = await response;
+            setData(result.recipeList);
+            console.log(result)
+        };
+        fetchData();
+    }, []);
+    const createRecipe = () => {
+        props.history.push("/createRecipe")
+    };
+    const addSeller = () => {
+        props.history.push("/addSeller")
+    };
     return (
         <div>
             <Header history={props.history}/>
@@ -14,27 +35,38 @@ const Recipes = (props) => {
                                 <h2 className="block-title text-center">
                                     Our Recipes
                                 </h2>
+                                <div className="reserve-book-btn text-right">
+                                    <button className="reserve-book-btn text-right hvr-underline-from-center" type="submit"
+                                            onClick={addSeller} id="submit">Add New Seller
+                                    </button>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button className="reserve-book-btn text-right hvr-underline-from-center" type="submit"
+                                            onClick={createRecipe} id="submit">Add Recipe
+                                    </button>
+                                </div>
+                            </div>
+                            <div className="reserve-book-btn text-right">
+
                             </div>
                             <div className="team-box">
 
                                 <div className="row">
-                                    <div className="col-md-4 col-sm-6">
-                                        <div className="sf-team">
-                                            <div className="thumb">
-                                                <a href="#"><img src="images/chicken_curry.jpg" alt=""/></a>
-                                            </div>
-                                            <div className="text-col">
-                                                <h3>Chicken Curry</h3>
-                                                <p>Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt.
-                                                    Duis
-                                                    leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis
-                                                    magna.
-                                                    Aenean commodo ligula.</p>
+                                    {data && data.map(item => (
+                                        <div className="col-md-4 col-sm-6">
+                                            <div className="sf-team">
+                                                <div className="thumb">
+                                                    <a href="#"><img src={item.image} alt=""/></a>
+                                                </div>
+                                                <div className="text-col">
+                                                    <h3>{item.recipeName}</h3>
+                                                    <p>{item.description}</p>
 
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="col-md-4 col-sm-6">
+                                    ))}
+
+                                    {/*<div className="col-md-4 col-sm-6">
                                         <div className="sf-team">
                                             <div className="thumb">
                                                 <a href="#"><img src="images/chicken_gavthi.jpg" alt=""/></a>
@@ -66,9 +98,7 @@ const Recipes = (props) => {
                                             </div>
                                         </div>
                                     </div>
-                                    <br/>
-                                    <br/>
-                                    <br/>
+
                                     <div className="col-md-4 col-sm-6">
                                         <div className="sf-team">
                                             <div className="thumb">
@@ -116,7 +146,7 @@ const Recipes = (props) => {
 
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>*/}
                                 </div>
                             </div>
                         </div>

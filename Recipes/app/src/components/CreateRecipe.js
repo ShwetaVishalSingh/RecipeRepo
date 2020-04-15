@@ -1,7 +1,31 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Header from "./Header";
+import {postData} from "../services/Ajax";
+import showNotification from "../utilis/Notifications";
 
 const CreateRecipe = (props) => {
+    const [data, setData] = useState({recipeName: "", recipeImage: "", portion: 0, type: "", ingredients: "", description:"", cookingStep:""});
+
+    const handlePostData = async (event) => {
+        event.preventDefault();
+        const response = await postData("/api/recipe/addRecipe", data);
+        if (response.status === 200) {
+            const result = await response.json();
+            props.history.push("/recipe");
+            showNotification("Recipe Created!", result.message, "success");
+        } else {
+            showNotification("Error!", "Seems like you are missing some required details or you are not providing valid details.", "danger");
+        }
+    };
+
+    const handleInputChange = (event) => {
+        const value = event.target.value;
+        const name = event.target.name;
+        data[name] = value
+        setData(data)
+        return true;
+    }
+
     return (
         <div>
             <Header history={props.history}/>
@@ -16,39 +40,39 @@ const CreateRecipe = (props) => {
                                             Recipes
                                         </h2>
                                     </div>
-                                    <form id="contact-form" method="post" className="reservations-box"
-                                          name="contactform"
-                                          action="mail.php">
+                                    <form onSubmit={handlePostData} className="reservations-box"
+                                          name="recipeForm">
                                         <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <div className="form-box">
                                                 <input type="text" name="recipeName" placeholder="Name"
-                                                       required="required" data-error="Recipe name is required."/>
+                                                       required="required" onChange={handleInputChange} data-error="Recipe name is required."/>
                                             </div>
                                         </div>
                                         <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <div className="form-box">
                                                 <input type="text" name="recipeImage" placeholder="Image"
-                                                       required="required" data-error="Image is required."/>
+                                                       required="required" onChange={handleInputChange} data-error="Image is required."/>
                                             </div>
                                         </div>
                                         <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <div className="form-box">
                                                 <input type="number" name="portion" placeholder="Portion"
-                                                       required="required" data-error="Portion is required"/>
+                                                       required="required" onChange={handleInputChange} data-error="Portion is required"/>
                                             </div>
                                         </div>
                                         <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <div className="form-box">
                                                 <input type="text" name="type" placeholder="Type of recipe ex. Sushi"
-                                                       required="required" data-error="Type of recipe."/>
+                                                       required="required" onChange={handleInputChange} data-error="Type of recipe."/>
                                             </div>
                                         </div>
 
                                         <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <div className="form-box">
-                                                <textarea type="text" name="portion"
+                                                <textarea type="text" name="description"
                                                           placeholder="Please enter the description."
                                                           required="required"
+                                                          onChange={handleInputChange}
                                                           data-error="Please enter comma separate list of ingredients."/>
                                             </div>
                                         </div>
@@ -56,7 +80,7 @@ const CreateRecipe = (props) => {
                                         <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <div className="form-box">
                                                 <textarea type="text" name="cookingStep" placeholder="Cooking step"
-                                                          required="required" data-error="Please tell us how to cook."/>
+                                                          required="required" onChange={handleInputChange} data-error="Please tell us how to cook."/>
                                             </div>
                                         </div>
                                         <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -64,6 +88,7 @@ const CreateRecipe = (props) => {
                                                 <textarea type="text" name="ingredients"
                                                           placeholder="Please enter comma separate list of ingredients."
                                                           required="required"
+                                                          onChange={handleInputChange}
                                                           data-error="Please enter comma separate list of ingredients."/>
                                             </div>
                                         </div>
