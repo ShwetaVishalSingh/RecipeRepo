@@ -41,13 +41,13 @@ public class RecipeController {
     @PostMapping(value = "addRecipe")
     public ResponseEntity<RecipeResponse> addRecipes(@RequestBody RecipeDetails recipeDetails) {
         if (null == recipeDetails) {
-            return ResponseEntity.badRequest().body( new RecipeResponse(null,"Payload is empty"));
+            return ResponseEntity.badRequest().body( new RecipeResponse(null,"Payload is empty."));
         }
         try {
             recipeService.addRecipes(recipeDetails);
-            return ResponseEntity.ok().body( new RecipeResponse(null,"Recipe has been added"));
+            return ResponseEntity.ok().body( new RecipeResponse(null,"Recipe has been added."));
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body( new RecipeResponse(null,"Something went wrong "));
+            return ResponseEntity.badRequest().body( new RecipeResponse(null,"Something went wrong."));
         }
     }
 
