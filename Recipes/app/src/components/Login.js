@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {white} from "color-name";
 import showNotification from "../utilis/Notifications";
 import {postData} from "../services/Ajax";
 
@@ -109,6 +108,7 @@ const Login = (props) => {
                                             <div className="reserve-book-btn text-center">
                                                 <button className="hvr-underline-from-center" type="submit">SUBMIT
                                                 </button>
+
                                                 <div className="sf-team text-col">
                                                     <ul className="team-social">
                                                         <li><a href="#" onClick={notImplementedYet}><i className="fa fa-facebook"
