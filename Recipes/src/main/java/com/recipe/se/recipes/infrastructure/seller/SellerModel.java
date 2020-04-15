@@ -1,6 +1,6 @@
 package com.recipe.se.recipes.infrastructure.seller;
 
-import com.recipe.se.recipes.infrastructure.seller.h2store.Seller;
+import com.recipe.se.recipes.domain.seller.Seller;
 
 public class SellerModel {
     private String id;

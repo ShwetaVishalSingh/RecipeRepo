@@ -42,7 +42,7 @@ public class SellerController {
     @DeleteMapping(value = "{sellerId}")
     public ResponseEntity deleteSellerById(@PathVariable String sellerId) {
         sellerService.deleteSellerById(sellerId);
-        return ResponseEntity.ok().body("Store has been deleted");
+        return ResponseEntity.ok().body("Seller has been deleted");
     }
 
     @PostMapping(value = "{sellerId}")

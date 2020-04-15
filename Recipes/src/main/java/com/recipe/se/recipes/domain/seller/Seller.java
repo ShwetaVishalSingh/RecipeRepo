@@ -1,4 +1,4 @@
-package com.recipe.se.recipes.infrastructure.seller.h2store;
+package com.recipe.se.recipes.domain.seller;
 
 import com.recipe.se.recipes.infrastructure.seller.SellerDetails;
 

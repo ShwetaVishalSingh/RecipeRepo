@@ -1,18 +1,17 @@
-package com.recipe.se.recipes.domain.store;
+package com.recipe.se.recipes.domain.repository;
 
 
+import com.recipe.se.recipes.domain.seller.Seller;
 import com.recipe.se.recipes.infrastructure.seller.SellerDetails;
 import com.recipe.se.recipes.infrastructure.seller.SellerModel;
-import com.recipe.se.recipes.infrastructure.seller.h2store.DatabaseSellerRepository;
-import com.recipe.se.recipes.infrastructure.seller.h2store.Seller;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SellerH2DatabaseRepository implements SellerRepository {
-    private final DatabaseSellerRepository databaseRepository;
+public class SellerDbRepository implements SellerRepository {
+    private final CrudSellerRepository databaseRepository;
 
-    public SellerH2DatabaseRepository(DatabaseSellerRepository databaseRepository) {
+    public SellerDbRepository(CrudSellerRepository databaseRepository) {
         this.databaseRepository = databaseRepository;
     }
 
@@ -20,8 +19,8 @@ public class SellerH2DatabaseRepository implements SellerRepository {
     @Override
     public void addSeller(SellerDetails sellerDetails) {
 
-        Seller databaseStore = Seller.convertToSeller(sellerDetails);
-        databaseRepository.save(databaseStore);
+        Seller seller = Seller.convertToSeller(sellerDetails);
+        databaseRepository.save(seller);
 
     }
 
@@ -37,8 +36,8 @@ public class SellerH2DatabaseRepository implements SellerRepository {
     }
 
     @Override
-    public void deleteSellerById(String storeId) {
-        databaseRepository.deleteById(storeId);
+    public void deleteSellerById(String sellerId) {
+        databaseRepository.deleteById(sellerId);
     }
 
     @Override

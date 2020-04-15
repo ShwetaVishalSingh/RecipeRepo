@@ -1,4 +1,4 @@
-package com.recipe.se.recipes.infrastructure.recipe.h2;
+package com.recipe.se.recipes.domain.recipe;
 
 import javax.persistence.*;
 import java.io.Serializable;

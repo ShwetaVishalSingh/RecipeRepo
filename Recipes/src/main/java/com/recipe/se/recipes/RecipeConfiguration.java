@@ -3,15 +3,15 @@ package com.recipe.se.recipes;
 import com.recipe.se.recipes.application.RecipeService;
 import com.recipe.se.recipes.application.SellerService;
 import com.recipe.se.recipes.application.UserService;
-import com.recipe.se.recipes.domain.recipe.H2FileRecipeRepository;
-import com.recipe.se.recipes.domain.recipe.RecipeRepository;
-import com.recipe.se.recipes.domain.store.SellerH2DatabaseRepository;
-import com.recipe.se.recipes.domain.store.SellerRepository;
-import com.recipe.se.recipes.domain.user.UserH2DatabaseRepository;
-import com.recipe.se.recipes.domain.user.UserRepository;
-import com.recipe.se.recipes.infrastructure.recipe.h2.DatabaseRecipeRepository;
-import com.recipe.se.recipes.infrastructure.user.h2.DatabaseUserRepository;
-import com.recipe.se.recipes.infrastructure.seller.h2store.DatabaseSellerRepository;
+import com.recipe.se.recipes.domain.repository.CrudRecipeRepository;
+import com.recipe.se.recipes.domain.repository.CrudSellerRepository;
+import com.recipe.se.recipes.domain.repository.RecipeDbRepository;
+import com.recipe.se.recipes.domain.repository.RecipeRepository;
+import com.recipe.se.recipes.domain.repository.SellerDbRepository;
+import com.recipe.se.recipes.domain.repository.SellerRepository;
+import com.recipe.se.recipes.domain.repository.UserDbRepository;
+import com.recipe.se.recipes.domain.repository.UserRepository;
+import com.recipe.se.recipes.domain.repository.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -22,10 +22,10 @@ public class RecipeConfiguration {
     private SellerService storeService;
     private UserService userService;
 
-    public RecipeConfiguration(DatabaseRecipeRepository databaseRepository, DatabaseSellerRepository databaseStoreRepository, DatabaseUserRepository databaseUserRepository) {
-        RecipeRepository recipeRepository = new H2FileRecipeRepository(databaseRepository, databaseStoreRepository);
-        SellerRepository storeRepository = new SellerH2DatabaseRepository(databaseStoreRepository);
-        UserRepository userRepository = new UserH2DatabaseRepository(databaseUserRepository);
+    public RecipeConfiguration(CrudRecipeRepository crudRecipeRepo, CrudSellerRepository crudSellerRepo, CrudUserRepository crudUserRepo) {
+        RecipeRepository recipeRepository = new RecipeDbRepository(crudRecipeRepo, crudSellerRepo);
+        SellerRepository storeRepository = new SellerDbRepository(crudSellerRepo);
+        UserRepository userRepository = new UserDbRepository(crudUserRepo);
 
         this.recipeService = new RecipeService(recipeRepository);
         this.storeService = new SellerService(storeRepository);

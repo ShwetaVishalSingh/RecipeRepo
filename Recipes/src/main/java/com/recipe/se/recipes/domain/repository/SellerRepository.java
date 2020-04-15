@@ -1,4 +1,4 @@
-package com.recipe.se.recipes.domain.store;
+package com.recipe.se.recipes.domain.repository;
 
 import com.recipe.se.recipes.infrastructure.seller.SellerDetails;
 import com.recipe.se.recipes.infrastructure.seller.SellerModel;
@@ -10,7 +10,7 @@ public interface SellerRepository {
 
     List<SellerModel> fetchAllSellers();
 
-    void deleteSellerById(String storeId);
+    void deleteSellerById(String sellerId);
 
     void updateSellerById(String sellerId, SellerDetails sellerDetails);
 }

@@ -1,11 +1,11 @@
 package com.recipe.se.recipes.domain;
 
 import com.recipe.se.recipes.domain.exception.RecipeNotFoundException;
-import com.recipe.se.recipes.domain.recipe.H2FileRecipeRepository;
-import com.recipe.se.recipes.infrastructure.recipe.h2.Recipe;
-import com.recipe.se.recipes.infrastructure.recipe.h2.DatabaseRecipeRepository;
-import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.RecipeModel;
-import com.recipe.se.recipes.infrastructure.seller.h2store.DatabaseSellerRepository;
+import com.recipe.se.recipes.domain.repository.RecipeDbRepository;
+import com.recipe.se.recipes.domain.recipe.Recipe;
+import com.recipe.se.recipes.domain.repository.CrudRecipeRepository;
+import com.recipe.se.recipes.infrastructure.recipe.RecipeModel;
+import com.recipe.se.recipes.domain.repository.CrudSellerRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -23,15 +23,15 @@ class InMemoryDatabaseRepositoryTest {
         Recipe expectedRecipe = null;
 
         String recipeId = "123";
-        DatabaseRecipeRepository recipeRepository = mock(DatabaseRecipeRepository.class);
-        DatabaseSellerRepository storeRepository = mock(DatabaseSellerRepository.class);
+        CrudRecipeRepository recipeRepository = mock(CrudRecipeRepository.class);
+        CrudSellerRepository storeRepository = mock(CrudSellerRepository.class);
 
 
         //given(recipeRepository.findById(recipeId)).willReturn(Optional.of(new DatabaseRecipe("123", "abc", "1", Collections.emptySet(), Collections.emptySet())));
 
         //when
 
-        RecipeModel actualRecipe = new H2FileRecipeRepository(recipeRepository, storeRepository).fetchRecipeById(recipeId);
+        RecipeModel actualRecipe = new RecipeDbRepository(recipeRepository, storeRepository).fetchRecipeById(recipeId);
 
         //then
        // assertEquals(expectedRecipe.getRecipeName(), actualRecipe.getRecipeName());
@@ -42,8 +42,8 @@ class InMemoryDatabaseRepositoryTest {
         //given
 
         String recipeId = "123";
-        DatabaseRecipeRepository recipeRepository = mock(DatabaseRecipeRepository.class);
-        DatabaseSellerRepository storeRepository = mock(DatabaseSellerRepository.class);
+        CrudRecipeRepository recipeRepository = mock(CrudRecipeRepository.class);
+        CrudSellerRepository storeRepository = mock(CrudSellerRepository.class);
 
 
         given(recipeRepository.findById(recipeId)).willReturn(Optional.empty());
@@ -54,7 +54,7 @@ class InMemoryDatabaseRepositoryTest {
 
         //then
         Assertions.assertThrows(RecipeNotFoundException.class, () -> {
-            new H2FileRecipeRepository(recipeRepository, storeRepository).fetchRecipeById(recipeId);
+            new RecipeDbRepository(recipeRepository, storeRepository).fetchRecipeById(recipeId);
         });
 
     }

@@ -2,8 +2,8 @@ package com.recipe.se.recipes.infrastructure.rest;
 
 import com.recipe.se.recipes.application.RecipeService;
 import com.recipe.se.recipes.infrastructure.recipe.RecipeResponse;
-import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.RecipeDetails;
-import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.RecipeModel;
+import com.recipe.se.recipes.infrastructure.recipe.RecipeDetails;
+import com.recipe.se.recipes.infrastructure.recipe.RecipeModel;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

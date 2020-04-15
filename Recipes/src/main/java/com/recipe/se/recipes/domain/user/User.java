@@ -1,4 +1,4 @@
-package com.recipe.se.recipes.infrastructure.user.h2;
+package com.recipe.se.recipes.domain.user;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "USER")
-public class UserDatabase {
+public class User {
 
     @Id
     private String userName;
@@ -31,10 +31,10 @@ public class UserDatabase {
     @Column(name = "TYPE")
     private String type;
 
-    public UserDatabase() {
+    public User() {
     }
 
-    public UserDatabase(String userId, String userName, String password, String firstName, String lastName, String phoneNumber, String type) {
+    public User(String userId, String userName, String password, String firstName, String lastName, String phoneNumber, String type) {
         this.userId = userId;
         this.userName = userName;
         this.password = password;

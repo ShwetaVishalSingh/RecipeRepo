@@ -1,23 +1,21 @@
-package com.recipe.se.recipes.domain.recipe;
+package com.recipe.se.recipes.domain.repository;
 
 import com.recipe.se.recipes.domain.exception.RecipeNotFoundException;
 import com.recipe.se.recipes.domain.exception.StoreNotFoundException;
-import com.recipe.se.recipes.infrastructure.recipe.h2.DatabaseRecipeRepository;
-import com.recipe.se.recipes.infrastructure.recipe.h2.Recipe;
-import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.RecipeDetails;
-import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.RecipeModel;
-import com.recipe.se.recipes.infrastructure.seller.h2store.Seller;
-import com.recipe.se.recipes.infrastructure.seller.h2store.DatabaseSellerRepository;
+import com.recipe.se.recipes.domain.recipe.Recipe;
+import com.recipe.se.recipes.domain.seller.Seller;
+import com.recipe.se.recipes.infrastructure.recipe.RecipeDetails;
+import com.recipe.se.recipes.infrastructure.recipe.RecipeModel;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.*;
 
-public class H2FileRecipeRepository implements RecipeRepository {
+public class RecipeDbRepository implements RecipeRepository {
 
-    private final DatabaseRecipeRepository databaseRepository;
-    private final DatabaseSellerRepository databaseStoreRepository;
+    private final CrudRecipeRepository databaseRepository;
+    private final CrudSellerRepository databaseStoreRepository;
 
-    public H2FileRecipeRepository(DatabaseRecipeRepository databaseRepository, DatabaseSellerRepository databaseStoreRepository) {
+    public RecipeDbRepository(CrudRecipeRepository databaseRepository, CrudSellerRepository databaseStoreRepository) {
         this.databaseRepository = databaseRepository;
         this.databaseStoreRepository = databaseStoreRepository;
     }

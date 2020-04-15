@@ -1,6 +1,6 @@
-package com.recipe.se.recipes.infrastructure.recipe.h2;
+package com.recipe.se.recipes.domain.recipe;
 
-import com.recipe.se.recipes.infrastructure.recipe.payload.recipe.RecipeDetails;
+import com.recipe.se.recipes.infrastructure.recipe.RecipeDetails;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
