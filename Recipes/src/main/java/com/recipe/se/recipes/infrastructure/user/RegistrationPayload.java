@@ -17,6 +17,10 @@ public class RegistrationPayload {
     @Size(min=6,  message="Password must not be less than 6 characters")
     private String password;
 
+    @NotNull(message="Password cannot be missing or empty")
+    @Size(min=6,  message="Password must not be less than 6 characters")
+    private String confirmPassword;
+
     private String firstName;
 
     private String lastName;
@@ -28,14 +32,27 @@ public class RegistrationPayload {
     private String phoneNumber;
 
     @JsonCreator
-    public RegistrationPayload(@JsonProperty("userName") String userName, @JsonProperty("password") String password,
-                               @JsonProperty("firstName") String firstName, @JsonProperty("lastName") String lastName, @JsonProperty("phoneNumber") String phoneNumber) {
+    public RegistrationPayload(@JsonProperty("userName") String userName,
+                               @JsonProperty("password") String password,
+                               @JsonProperty("confirmPassword") String  confirmPassword,
+                               @JsonProperty("firstName") String firstName,
+                               @JsonProperty("lastName") String lastName,
+                               @JsonProperty("phoneNumber") String phoneNumber) {
         this.userName = userName;
         this.password = password;
+        this.confirmPassword = confirmPassword;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
 
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 
     public String getUserName() {
