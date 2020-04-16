@@ -27,19 +27,28 @@ public class UserController {
     @PostMapping(value = "register", consumes = "application/json", produces = " application/json")
     public ResponseEntity<RegistrationModel> register (@Valid @RequestBody RegistrationPayload registrationPayload) {
 
-        RegistrationModel response = userService.register(registrationPayload, CustomerType.CUSTOMER.name());
-        return ResponseEntity.ok().body(response);
+        if(registrationPayload.getPassword().equals(registrationPayload.getConfirmPassword()) ) {
+            RegistrationModel response = userService.register(registrationPayload, CustomerType.CUSTOMER.name());
+            return ResponseEntity.ok().body(response);
+        } else
+        {
+            return ResponseEntity.badRequest().body(new RegistrationModel("Password and Confirm password does not match to each other."));
+
+        }
 
 
     }
     @PostMapping(value = "register/seller", consumes = "application/json", produces = " application/json")
-    public ResponseEntity<RegistrationModel> registerSeller (@Valid @RequestBody RegistrationPayload registrationPayload) {
+    public ResponseEntity<RegistrationModel> registerSeller (@Valid @RequestBody RegistrationPayload registrationPayload)
+    {
 
-        RegistrationModel response = userService.register(registrationPayload, CustomerType.SELLER.name());
-        return ResponseEntity.ok().body(response);
+        if(registrationPayload.getPassword().equals(registrationPayload.getConfirmPassword()) ) {
+            RegistrationModel response = userService.register(registrationPayload, CustomerType.SELLER.name());
+            return ResponseEntity.ok().body(response);
 
-
-
+        }else {
+            return ResponseEntity.badRequest().body(new RegistrationModel("Password and Confirm password does not match to each other."));
+        }
     }
 
     @PostMapping(value = "login", consumes = "application/json", produces = "application/json")

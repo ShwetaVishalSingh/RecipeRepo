@@ -6,6 +6,7 @@ public class RegistrationModel {
     private String lastName;
     private String email;
     private String phone;
+    private String errorMessage;
 
     public RegistrationModel(String id, String firstName, String lastName, String email, String phone) {
         this.id = id;
@@ -13,6 +14,10 @@ public class RegistrationModel {
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
+    }
+
+    public RegistrationModel(String errorMessage) {
+        this.errorMessage = errorMessage;
     }
 
     public String getId() {
@@ -53,5 +58,13 @@ public class RegistrationModel {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
     }
 }
