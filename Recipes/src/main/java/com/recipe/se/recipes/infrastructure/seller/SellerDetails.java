@@ -8,13 +8,13 @@ import org.apache.catalina.Store;
 public class SellerDetails {
     private String id;
     private String name;
-    private String city ;
+    private String email;
+    private String phone;
+    private String image;
     private String address;
+    private String city ;
     private String state;
     private String postalCode;
-    private String image;
-    private String phone;
-    private String email;
 
     @JsonCreator
     public SellerDetails(@JsonProperty("id") String id,

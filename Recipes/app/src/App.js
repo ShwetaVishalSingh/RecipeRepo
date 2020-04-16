@@ -43,7 +43,6 @@ const App = () => {
                         <AppRoute exact path="/blog" layout={Blog} component={Blog}/>
                         <AppRoute exact path="/recipe" layout={Recipes} component={Recipes}/>
                         <AppRoute exact path="/createRecipe" layout={CreateRecipe} component={CreateRecipe}/>
-                        <AppRoute exact path="/createStore" layout={AddSeller} component={AddSeller}/>
                         <AppRoute exact path="/register" layout={Register} component={Register}/>
                         <AppRoute exact path="/registerBusinessUser" layout={RegisterBusinessUser} component={RegisterBusinessUser}/>
                         <AppRoute exact path="/contactus" layout={ContactUs} component={ContactUs}/>

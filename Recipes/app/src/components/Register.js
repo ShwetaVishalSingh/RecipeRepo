@@ -25,7 +25,7 @@ const Register = (props) => {
         data[name] = value
         setData(data)
         return true;
-    }
+    };
 
     const registerAsSeller = () => {
       props.history.push("/registerBusinessUser")
