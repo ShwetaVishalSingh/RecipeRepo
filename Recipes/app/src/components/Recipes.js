@@ -36,10 +36,7 @@ const Recipes = (props) => {
                                     Our Recipes
                                 </h2>
                                 <div className="reserve-book-btn text-right">
-                                    <button className="reserve-book-btn text-right hvr-underline-from-center" type="submit"
-                                            onClick={addSeller} id="submit">Add New Seller
-                                    </button>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;
+
                                     <button className="reserve-book-btn text-right hvr-underline-from-center" type="submit"
                                             onClick={createRecipe} id="submit">Add Recipe
                                     </button>

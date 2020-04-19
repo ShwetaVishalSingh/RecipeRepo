@@ -5,7 +5,7 @@ import './Register.css'
 
 
 const Register = (props) => {
-    const [data, setData] = useState({userName: "", password: "", firstName: {}, lastName: {}, phoneNumber: {}});
+    const [data, setData] = useState({userName: "", password: "", confirmPassword:"", firstName: {}, lastName: {}, phoneNumber: {}});
 
     const handlePostData = async (event) => {
         event.preventDefault();
@@ -13,7 +13,7 @@ const Register = (props) => {
         if (response.status === 200) {
             const result = await response.json();
             props.history.push("/");
-            showNotification("User Registered!", "Welcome!" + result.firstName + " " + result.lastName, "success");
+            showNotification("User Registered!", "Welcome! " + result.firstName + " " + result.lastName, "success");
         } else {
             showNotification("Error!", "Seems like you are missing some required details or you are not providing valid details.", "danger");
         }
@@ -74,6 +74,7 @@ const Register = (props) => {
                                         <div className="form-box">
                                             <input type="password" name="confirmPassword" id="form_name"
                                                    placeholder="Confirm Password"
+                                                   onChange={handleInputChange}
                                                    required="required" data-error="Confirm Password is required."/>
                                         </div>
                                     </div>

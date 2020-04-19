@@ -6,7 +6,7 @@ import AddSeller from "./AddSeller";
 
 
 const RegisterBusinessUser = (props) => {
-    const [data, setData] = useState({userName: "", password: "", firstName: {}, lastName: {}, phoneNumber: {}});
+    const [data, setData] = useState({userName: "", password: "",confirmPassword:"", firstName: {}, lastName: {}, phoneNumber: {}});
     const [nextStage, setNextStage] = useState(false);
 
     const handlePostData = async (event) => {
@@ -72,6 +72,7 @@ const RegisterBusinessUser = (props) => {
                                         <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <div className="form-box">
                                                 <input type="password" name="confirmPassword" id="form_name"
+                                                       onChange={handleInputChange}
                                                        placeholder="Confirm Password"
                                                        required="required" data-error="Confirm Password is required."/>
                                             </div>
