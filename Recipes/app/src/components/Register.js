@@ -10,12 +10,12 @@ const Register = (props) => {
     const handlePostData = async (event) => {
         event.preventDefault();
         const response = await postData("/api/user/register", data);
+        const result = await response.json();
         if (response.status === 200) {
-            const result = await response.json();
             props.history.push("/");
             showNotification("User Registered!", "Welcome! " + result.firstName + " " + result.lastName, "success");
         } else {
-            showNotification("Error!", "Seems like you are missing some required details or you are not providing valid details.", "danger");
+            showNotification("Error!", result.errorMessage, "danger");
         }
     };
 
@@ -82,6 +82,7 @@ const Register = (props) => {
                                         <div className="form-box">
                                             <input type="text" onChange={handleInputChange} name="firstName"
                                                    id="firstName"
+                                                   required="required"
                                                    placeholder="First Name" data-error="First name is required."/>
                                         </div>
                                     </div>
@@ -89,6 +90,7 @@ const Register = (props) => {
                                         <div className="form-box">
                                             <input type="text" onChange={handleInputChange} name="lastName"
                                                    id="lastName"
+                                                   required="required"
                                                    placeholder="Last Name"
                                                    required="required" data-error="Last name is required."/>
                                         </div>

@@ -20,16 +20,10 @@ public class UserDbRepository implements UserRepository {
     @Override
     public RegistrationModel register(RegistrationPayload payload, String customerType) {
 
-        Optional<User> userOptional = crudUserRepository.findById(payload.getUserName());
-        if(userOptional.isPresent()) {
-            return new RegistrationModel(payload.getUserName() + " is already registered with us.");
-        }else {
             User user = createUserFromPayload(payload,customerType);
             crudUserRepository.save(user);
             User result = crudUserRepository.findById(payload.getUserName()).get();
             return new RegistrationModel(result.getUserId(),result.getFirstName(),result.getLastName(),result.getUserName(),result.getPhoneNumber());
-        }
-
 
     }
 
@@ -60,6 +54,12 @@ public class UserDbRepository implements UserRepository {
         }
 
         return false;
+    }
+
+    @Override
+    public boolean checkIfUserAlreadyExist(String userName) {
+        Optional<User> user = crudUserRepository.findById(userName);
+        return user.isPresent();
     }
 
 

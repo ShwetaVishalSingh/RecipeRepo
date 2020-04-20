@@ -28,4 +28,9 @@ public class UserService {
     public boolean  changePassword(NewPassword payload) {
          return userRepository.changePassword(payload);
     }
+
+    public boolean checkIfUserAlreadyExist(String userName) {
+
+        return userRepository.checkIfUserAlreadyExist(userName);
+    }
 }

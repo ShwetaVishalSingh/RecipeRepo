@@ -21,8 +21,10 @@ public class RegistrationPayload {
     @Size(min=6,  message="Password must not be less than 6 characters")
     private String confirmPassword;
 
+    @NotNull(message="first name cannot be missing or empty")
     private String firstName;
 
+    @NotNull(message="Last name cannot be missing or empty")
     private String lastName;
 
     @NotNull(message="Phone Number cannot be missing or empty")

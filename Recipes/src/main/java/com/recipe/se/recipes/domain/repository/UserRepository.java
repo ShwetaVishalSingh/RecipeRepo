@@ -12,4 +12,6 @@ public interface UserRepository {
  boolean login(LoginDetails payload);
 
 boolean  changePassword(NewPassword payload);
+
+ boolean checkIfUserAlreadyExist(String userName);
 }

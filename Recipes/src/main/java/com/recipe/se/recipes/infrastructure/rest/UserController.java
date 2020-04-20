@@ -27,6 +27,11 @@ public class UserController {
     @PostMapping(value = "register", consumes = "application/json", produces = " application/json")
     public ResponseEntity<RegistrationModel> register (@Valid @RequestBody RegistrationPayload registrationPayload) {
 
+        boolean userExist = userService.checkIfUserAlreadyExist(registrationPayload.getUserName());
+        if(userExist)
+        {
+            return ResponseEntity.badRequest().body(new RegistrationModel("User you trying to add already existing in our record. Please try with other user name or login with same user"));
+        }
         if(registrationPayload.getPassword().equals(registrationPayload.getConfirmPassword()) ) {
             RegistrationModel response = userService.register(registrationPayload, CustomerType.CUSTOMER.name());
             return ResponseEntity.ok().body(response);
@@ -42,6 +47,11 @@ public class UserController {
     public ResponseEntity<RegistrationModel> registerSeller (@Valid @RequestBody RegistrationPayload registrationPayload)
     {
 
+        boolean userExist = userService.checkIfUserAlreadyExist(registrationPayload.getUserName());
+        if(userExist)
+        {
+            return ResponseEntity.badRequest().body(new RegistrationModel("User you trying to add already existing in our record. Please try with other user name or login with same user"));
+        }
         if(registrationPayload.getPassword().equals(registrationPayload.getConfirmPassword()) ) {
             RegistrationModel response = userService.register(registrationPayload, CustomerType.SELLER.name());
             return ResponseEntity.ok().body(response);
