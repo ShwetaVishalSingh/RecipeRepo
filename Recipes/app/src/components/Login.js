@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import showNotification from "../utilis/Notifications";
 import {postData} from "../services/Ajax";
+import AuthorizeService from "../services/api-authorization/AuthorizeService";
 
 const goToRegisterPage = (props) => {
     return (
@@ -24,13 +25,19 @@ const Login = (props) => {
     };
     const handlePostData = async (event) => {
         event.preventDefault();
-        const response = await postData("/api/user/login", data);
-        const result = await response.json();
-        if (response.status === 200) {
-            props.history.push("/home")
-            showNotification("Login Successful", result.message, "success")
+        const auth = await AuthorizeService
+            .executeBasicAuthenticationService("Admin1", "Admin");
+        if (auth && auth.message) {
+            const response = await postData("/api/user/login", data);
+            const result = await response.json();
+            if (response.status === 200) {
+                props.history.push("/home")
+                showNotification("Login Successful", result.message, "success")
+            } else {
+                showNotification("Error", result.message, "danger")
+            }
         } else {
-            showNotification("Error", result.message, "danger")
+            showNotification("Error", "Basic authentication did not succeeded", "danger")
         }
     };
 
@@ -111,15 +118,19 @@ const Login = (props) => {
 
                                                 <div className="sf-team text-col">
                                                     <ul className="team-social">
-                                                        <li><a href="#" onClick={notImplementedYet}><i className="fa fa-facebook"
-                                                                           aria-hidden="true"></i></a></li>
-                                                        <li><a href="#" onClick={notImplementedYet}><i className="fa fa-google-plus"
-                                                                           aria-hidden="true"></i></a></li>
-                                                        <li><a href="#" onClick={notImplementedYet}><i className="fa fa-twitter"
-                                                                           aria-hidden="true"></i></a>
+                                                        <li><a href="#" onClick={notImplementedYet}><i
+                                                            className="fa fa-facebook"
+                                                            aria-hidden="true"></i></a></li>
+                                                        <li><a href="#" onClick={notImplementedYet}><i
+                                                            className="fa fa-google-plus"
+                                                            aria-hidden="true"></i></a></li>
+                                                        <li><a href="#" onClick={notImplementedYet}><i
+                                                            className="fa fa-twitter"
+                                                            aria-hidden="true"></i></a>
                                                         </li>
-                                                        <li><a href="#" onClick={notImplementedYet}><i className="fa fa-linkedin"
-                                                                           aria-hidden="true"></i></a></li>
+                                                        <li><a href="#" onClick={notImplementedYet}><i
+                                                            className="fa fa-linkedin"
+                                                            aria-hidden="true"></i></a></li>
                                                     </ul>
                                                 </div>
                                             </div>

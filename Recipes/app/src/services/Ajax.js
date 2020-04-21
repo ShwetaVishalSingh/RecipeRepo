@@ -35,4 +35,4 @@ export async function postData(url = '', data = {}, isJson = false) {
     return result.json(); // parses JSON response into native JavaScript objects
   }
   return result; // parses JSON response into native JavaScript objects
-};
+}

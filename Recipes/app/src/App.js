@@ -15,7 +15,6 @@ import Menu from "./components/Menu";
 import ReactNotification from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
 import Recipes from "./components/Recipes";
-import AddSeller from "./components/AddSeller";
 import RegisterBusinessUser from "./components/RegisterBusinessUser";
 
 
