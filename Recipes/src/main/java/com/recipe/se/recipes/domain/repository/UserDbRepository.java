@@ -18,9 +18,9 @@ public class UserDbRepository implements UserRepository {
     }
 
     @Override
-    public RegistrationModel register(RegistrationPayload payload, String customerType) {
+    public RegistrationModel register(RegistrationPayload payload) {
 
-            User user = createUserFromPayload(payload,customerType);
+            User user = createUserFromPayload(payload);
             crudUserRepository.save(user);
             User result = crudUserRepository.findById(payload.getUserName()).get();
             return new RegistrationModel(result.getUserId(),result.getFirstName(),result.getLastName(),result.getUserName(),result.getPhoneNumber());
@@ -59,13 +59,16 @@ public class UserDbRepository implements UserRepository {
     @Override
     public boolean checkIfUserAlreadyExist(String userName) {
         Optional<User> user = crudUserRepository.findById(userName);
-        return user.isPresent();
+        if(user.isPresent()) {
+            return true;
+        }
+        return false;
     }
 
 
-    private User createUserFromPayload(RegistrationPayload payload, String customerType) {
+    private User createUserFromPayload(RegistrationPayload payload) {
         return new User(UUID.randomUUID().toString(), payload.getUserName(), payload.getPassword(),
-                payload.getFirstName(),payload.getLastName(),payload.getPhoneNumber(), customerType);
+                payload.getFirstName(),payload.getLastName(),payload.getPhoneNumber(), payload.getCustomerType());
     }
 }
 

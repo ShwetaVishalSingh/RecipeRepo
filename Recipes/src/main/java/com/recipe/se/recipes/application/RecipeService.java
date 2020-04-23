@@ -37,8 +37,8 @@ public class RecipeService {
         recipeRepository.updateRecipe(recipeId, recipeDetails);
     }
 
-    public List <RecipeModel> fetchByStore(String storeId) {
-         return recipeRepository.fetchByStore(storeId);
+    public List <RecipeModel> fetchBySeller(String sellerId) {
+         return recipeRepository.fetchBySeller(sellerId);
     }
 
     public List<RecipeModel> findRecipeBy(String searchTerm) {

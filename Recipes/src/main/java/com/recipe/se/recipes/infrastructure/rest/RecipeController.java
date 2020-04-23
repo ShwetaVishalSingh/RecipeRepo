@@ -88,9 +88,9 @@ public class RecipeController {
         return ResponseEntity.ok("Recipe updated Successfully");
     }
 
-    @GetMapping(value = "store/{storeId}")
-    public ResponseEntity fetchStoreRecipes(@PathVariable String storeId) {
-        List<RecipeModel> recipes = recipeService.fetchByStore(storeId);
+    @GetMapping(value = "seller/{sellerId}")
+    public ResponseEntity fetchSellerRecipes(@PathVariable String sellerId) {
+        List<RecipeModel> recipes = recipeService.fetchBySeller(sellerId);
         return ResponseEntity.ok(recipes);
     }
 

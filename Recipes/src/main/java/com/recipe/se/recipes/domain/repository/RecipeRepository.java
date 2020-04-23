@@ -18,7 +18,7 @@ public interface RecipeRepository {
 
      void updateRecipe(String recipeId, RecipeDetails paylaod) throws RecipeNotFoundException;
 
-    List<RecipeModel> fetchByStore(String storeId);
+    List<RecipeModel> fetchBySeller(String sellerId);
 
     List<RecipeModel> findRecipeBy(String searchTerm);
 }

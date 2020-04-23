@@ -6,12 +6,12 @@ import AddSeller from "./AddSeller";
 
 
 const RegisterBusinessUser = (props) => {
-    const [data, setData] = useState({userName: "", password: "",confirmPassword:"", firstName: {}, lastName: {}, phoneNumber: {}});
+    const [data, setData] = useState({userName: "", password: "",confirmPassword:"",customerType: "SELLER", firstName: {}, lastName: {}, phoneNumber: {}});
     const [nextStage, setNextStage] = useState(false);
 
     const handlePostData = async (event) => {
         event.preventDefault();
-        const response = await postData("/api/user/register/seller", data);
+        const response = await postData("/api/user/register/", data);
         const result = await response.json();
         if (response.status === 200) {
             setNextStage(true);

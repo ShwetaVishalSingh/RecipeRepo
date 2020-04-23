@@ -7,7 +7,7 @@ import com.recipe.se.recipes.infrastructure.user.RegistrationModel;
 
 public interface UserRepository {
 
- RegistrationModel register(RegistrationPayload registrationPayload, String customerType);
+ RegistrationModel register(RegistrationPayload registrationPayload);
 
  boolean login(LoginDetails payload);
 

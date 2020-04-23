@@ -31,7 +31,7 @@ public class SellerController {
     }
 
     @GetMapping
-    public ResponseEntity<SellerResponse> fetchAllStores() {
+    public ResponseEntity<SellerResponse> fetchAllSeller() {
         SellerResponse response = new SellerResponse();
         List<SellerModel> sellers = sellerService.fetchAllSeller();
         response.setSellers(sellers);

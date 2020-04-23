@@ -15,9 +15,9 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public RegistrationModel register(RegistrationPayload registrationPayload, String customerType)
+    public RegistrationModel register(RegistrationPayload registrationPayload)
     {
-        return userRepository.register(registrationPayload, customerType);
+        return userRepository.register(registrationPayload);
     }
 
     public boolean login(LoginDetails payload)

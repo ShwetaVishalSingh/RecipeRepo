@@ -51,6 +51,9 @@ public class Recipe implements Serializable {
     @Column(name = "IMAGE")
     private String image;
 
+    @Column(name = "SELLER_ID")
+    private String sellerId;
+
     public static Recipe convertToRecipe(RecipeDetails recipeDetails) {
         return new Recipe(
                 recipeDetails.getRecipeName(),
@@ -59,6 +62,7 @@ public class Recipe implements Serializable {
                 recipeDetails.getCookingStep(),
                 recipeDetails.getDescription(),
                 recipeDetails.getImage(),
+                recipeDetails.getSellerId(),
                 recipeDetails.getType());
     }
 
@@ -67,7 +71,7 @@ public class Recipe implements Serializable {
         if (this.createdDate == null) createdDate = new Date();
     }
 
-    public Recipe(String name, int portion, String ingredients, String steps, String description, String image, String type) {
+    public Recipe(String name, int portion, String ingredients, String steps, String description, String image, String type, String sellerId) {
         this.name = name;
         this.portion = portion;
         this.ingredients = ingredients;
@@ -75,9 +79,19 @@ public class Recipe implements Serializable {
         this.description = description;
         this.image = image;
         this.type = type;
+        this.sellerId = sellerId;
+
     }
 
     public Recipe() {
+    }
+
+    public String getSellerId() {
+        return sellerId;
+    }
+
+    public void setSellerId(String sellerId) {
+        this.sellerId = sellerId;
     }
 
     public String getRecipeId() {

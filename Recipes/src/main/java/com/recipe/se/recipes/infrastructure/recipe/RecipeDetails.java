@@ -11,6 +11,7 @@ public class RecipeDetails {
     private String image;
     private String description;
     private String type;
+    private String sellerId;
 
 
     @JsonCreator
@@ -20,6 +21,7 @@ public class RecipeDetails {
                          @JsonProperty("cookingStep") String cookingStep,
                          @JsonProperty("recipeImage") String image,
                          @JsonProperty("description") String description,
+                         @JsonProperty("sellerId") String sellerId,
                          @JsonProperty("type") String type) {
 
         this.recipeName = recipeName;
@@ -29,6 +31,15 @@ public class RecipeDetails {
         this.description = description;
         this.image = image;
         this.type = type;
+        this.sellerId = sellerId;
+    }
+
+    public String getSellerId() {
+        return sellerId;
+    }
+
+    public void setSellerId(String sellerId) {
+        this.sellerId = sellerId;
     }
 
     public String getRecipeName() {
@@ -97,6 +108,7 @@ public class RecipeDetails {
                 ", image='" + image + '\'' +
                 ", description='" + description + '\'' +
                 ", type='" + type + '\'' +
+                ", sellerId='" + sellerId + '\'' +
                 '}';
     }
 }

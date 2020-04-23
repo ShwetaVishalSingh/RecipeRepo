@@ -5,7 +5,7 @@ import './Register.css'
 
 
 const Register = (props) => {
-    const [data, setData] = useState({userName: "", password: "", confirmPassword:"", firstName: {}, lastName: {}, phoneNumber: {}});
+    const [data, setData] = useState({userName: "", password: "", confirmPassword:"", customerType: "CUSTOMER", firstName: {}, lastName: {}, phoneNumber: {}});
 
     const handlePostData = async (event) => {
         event.preventDefault();

@@ -6,7 +6,6 @@ import com.recipe.se.recipes.domain.recipe.Recipe;
 import com.recipe.se.recipes.domain.seller.Seller;
 import com.recipe.se.recipes.infrastructure.recipe.RecipeDetails;
 import com.recipe.se.recipes.infrastructure.recipe.RecipeModel;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.*;
 
@@ -75,8 +74,14 @@ public class RecipeDbRepository implements RecipeRepository {
     }
 
     @Override
-    public List<RecipeModel> fetchByStore(String storeId) {
-        throw new NotImplementedException();
+    public List<RecipeModel> fetchBySeller(String sellerId) {
+        List<RecipeModel> recipeBySellerId = new ArrayList<>();
+       List <Recipe> databaseRecipes  = databaseRepository.findBySellerId(sellerId);
+        for (Recipe databaseRecipe: databaseRecipes) {
+             recipeBySellerId.add(RecipeModel.convertToRecipe(databaseRecipe));
+
+        }
+      return recipeBySellerId;
 
     }
 

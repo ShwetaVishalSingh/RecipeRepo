@@ -33,19 +33,25 @@ public class RegistrationPayload {
     @Pattern(regexp = "[\\s]*[0-9]*[1-9]+",message="Please  enter digits only")
     private String phoneNumber;
 
+    @NotNull
+    private  String customerType;
+
     @JsonCreator
     public RegistrationPayload(@JsonProperty("userName") String userName,
                                @JsonProperty("password") String password,
                                @JsonProperty("confirmPassword") String  confirmPassword,
                                @JsonProperty("firstName") String firstName,
                                @JsonProperty("lastName") String lastName,
-                               @JsonProperty("phoneNumber") String phoneNumber) {
+                               @JsonProperty("phoneNumber") String phoneNumber,
+                               @JsonProperty("customerType") String customerType)
+    {
         this.userName = userName;
         this.password = password;
         this.confirmPassword = confirmPassword;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
+        this.customerType = customerType;
 
     }
 
@@ -95,5 +101,13 @@ public class RegistrationPayload {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getCustomerType() {
+        return customerType;
+    }
+
+    public void setCustomerType(String customerType) {
+        this.customerType = customerType;
     }
 }

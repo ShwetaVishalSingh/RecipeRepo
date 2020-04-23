@@ -9,4 +9,7 @@ import java.util.List;
 public interface CrudRecipeRepository extends CrudRepository<Recipe, String> {
     @Query(value = "SELECT * FROM RECIPE rp WHERE rp.RECIPE_NAME LIKE %?1%", nativeQuery = true)
    List<Recipe> findByName(String searchTerm);
+
+    @Query(value = "SELECT * FROM RECIPE rp WHERE rp.SELLER_ID = ?1", nativeQuery = true)
+    List<Recipe> findBySellerId(String sellerId);
 }
