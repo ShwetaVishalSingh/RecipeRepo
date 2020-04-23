@@ -31,7 +31,7 @@ class InMemoryDatabaseRepositoryTest {
 
         //when
 
-        RecipeModel actualRecipe = new RecipeDbRepository(recipeRepository, storeRepository).fetchRecipeById(recipeId);
+        RecipeModel actualRecipe = new RecipeDbRepository(recipeRepository).fetchRecipeById(recipeId);
 
         //then
        // assertEquals(expectedRecipe.getRecipeName(), actualRecipe.getRecipeName());
@@ -54,7 +54,7 @@ class InMemoryDatabaseRepositoryTest {
 
         //then
         Assertions.assertThrows(RecipeNotFoundException.class, () -> {
-            new RecipeDbRepository(recipeRepository, storeRepository).fetchRecipeById(recipeId);
+            new RecipeDbRepository(recipeRepository).fetchRecipeById(recipeId);
         });
 
     }

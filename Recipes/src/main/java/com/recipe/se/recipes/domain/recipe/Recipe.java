@@ -8,8 +8,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-
-@Entity(name = "ForeignKeyAssoEntity")
+@Entity
 @Table(name = "RECIPE")
 public class Recipe implements Serializable {
 
@@ -62,9 +61,6 @@ public class Recipe implements Serializable {
                 recipeDetails.getImage(),
                 recipeDetails.getType());
     }
-
-    //this will execute every time before persisting the data. we are checking if created time is null then add today date and this is the case when we add
-    //new recipe.
 
     @PrePersist
     protected void prePersist() {

@@ -23,7 +23,7 @@ public class RecipeConfiguration {
     private UserService userService;
 
     public RecipeConfiguration(CrudRecipeRepository crudRecipeRepo, CrudSellerRepository crudSellerRepo, CrudUserRepository crudUserRepo) {
-        RecipeRepository recipeRepository = new RecipeDbRepository(crudRecipeRepo, crudSellerRepo);
+        RecipeRepository recipeRepository = new RecipeDbRepository(crudRecipeRepo);
         SellerRepository storeRepository = new SellerDbRepository(crudSellerRepo);
         UserRepository userRepository = new UserDbRepository(crudUserRepo);
 

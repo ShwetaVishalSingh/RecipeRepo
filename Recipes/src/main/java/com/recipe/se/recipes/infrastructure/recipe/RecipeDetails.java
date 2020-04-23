@@ -2,10 +2,6 @@ package com.recipe.se.recipes.infrastructure.recipe;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.recipe.se.recipes.infrastructure.recipe.Ingredient;
-
-import java.util.HashSet;
-import java.util.Set;
 
 public class RecipeDetails {
     private String recipeName;

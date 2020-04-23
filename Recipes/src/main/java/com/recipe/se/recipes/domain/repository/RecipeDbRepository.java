@@ -13,11 +13,9 @@ import java.util.*;
 public class RecipeDbRepository implements RecipeRepository {
 
     private final CrudRecipeRepository databaseRepository;
-    private final CrudSellerRepository databaseStoreRepository;
 
-    public RecipeDbRepository(CrudRecipeRepository databaseRepository, CrudSellerRepository databaseStoreRepository) {
+    public RecipeDbRepository(CrudRecipeRepository databaseRepository) {
         this.databaseRepository = databaseRepository;
-        this.databaseStoreRepository = databaseStoreRepository;
     }
 
     @Override
@@ -27,26 +25,6 @@ public class RecipeDbRepository implements RecipeRepository {
         databaseRepository.save(databaseRecipe);
     }
 
-
-    private Set<Seller> getStoreById(RecipeDetails recipe) throws StoreNotFoundException {
-        Set<Seller> databaseStores = new HashSet<>();
-        //get all the stores from the storeId which is inside our payload
-
-        Set<String> storeIds = Collections.emptySet();
-
-        //iterate all the storeId and fetch all the store based on storeId
-        for (String storeId : storeIds) {
-
-            Optional<Seller> store = databaseStoreRepository.findById(storeId);
-            if (!store.isPresent()) {
-                throw new StoreNotFoundException("Store is not available");
-            }
-            databaseStores.add(store.get());
-
-        }
-
-        return databaseStores;
-    }
 
     @Override
     public List<RecipeModel> fetchAllRecipes() {

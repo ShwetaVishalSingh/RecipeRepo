@@ -4,9 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 @Entity
-@Table(name = "USER")
+@Table(name = "USERS")
 public class User {
 
     @Id
@@ -14,7 +13,6 @@ public class User {
 
     @Column(name = "ID")
     private String userId;
-
 
     @Column(name = "PASSWORD")
     private String password;
