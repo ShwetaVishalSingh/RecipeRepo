@@ -25,52 +25,30 @@ public class UserController {
     }
 
     @PostMapping(value = "register", consumes = "application/json", produces = " application/json")
-    public ResponseEntity<RegistrationModel> register (@Valid @RequestBody RegistrationPayload registrationPayload) {
+    public ResponseEntity<RegistrationModel> register(@Valid @RequestBody RegistrationPayload registrationPayload) {
 
         boolean userExist = userService.checkIfUserAlreadyExist(registrationPayload.getUserName());
-        if(userExist)
-        {
+        if (userExist) {
             return ResponseEntity.badRequest().body(new RegistrationModel("User you trying to add already existing in our record. Please try with other user name or login with same user"));
         }
-        if(registrationPayload.getPassword().equals(registrationPayload.getConfirmPassword()) ) {
+        if (registrationPayload.getPassword().equals(registrationPayload.getConfirmPassword())) {
             RegistrationModel response = userService.register(registrationPayload);
             return ResponseEntity.ok().body(response);
-        } else
-        {
+        } else {
             return ResponseEntity.badRequest().body(new RegistrationModel("Password and Confirm password does not match to each other."));
 
         }
-
-
     }
-   /* @PostMapping(value = "register/seller", consumes = "application/json", produces = " application/json")
-    public ResponseEntity<RegistrationModel> registerSeller (@Valid @RequestBody RegistrationPayload registrationPayload)
-    {
-
-        boolean userExist = userService.checkIfUserAlreadyExist(registrationPayload.getUserName());
-        if(userExist)
-        {
-            return ResponseEntity.badRequest().body(new RegistrationModel("User you trying to add already existing in our record. Please try with other user name or login with same user"));
-        }
-        if(registrationPayload.getPassword().equals(registrationPayload.getConfirmPassword()) ) {
-            RegistrationModel response = userService.register(registrationPayload, CustomerType.SELLER.name());
-            return ResponseEntity.ok().body(response);
-
-        }else {
-            return ResponseEntity.badRequest().body(new RegistrationModel("Password and Confirm password does not match to each other."));
-        }
-    }*/
 
     @PostMapping(value = "login", consumes = "application/json", produces = "application/json")
-     public ResponseEntity<LoginResponse> login(@RequestBody LoginDetails payload)
-    {
+    public ResponseEntity<LoginResponse> login(@RequestBody LoginDetails payload) {
         boolean isSuccessfulLogin = userService.login(payload);
-        if(isSuccessfulLogin){
+        if (isSuccessfulLogin) {
 
-            LoginResponse response = new LoginResponse(payload.getUserName(), "Welcome! " +payload.getUserName(), "");
+            LoginResponse response = new LoginResponse(payload.getUserName(), "Welcome! " + payload.getUserName(), "");
             return ResponseEntity.ok().body(response);
-        }else {
-            return ResponseEntity.badRequest().body(new LoginResponse("","User name or password is not valid! Please enter valid credentials","User name or password is not valid! Please enter valid credentials"));
+        } else {
+            return ResponseEntity.badRequest().body(new LoginResponse("", "User name or password is not valid! Please enter valid credentials", "User name or password is not valid! Please enter valid credentials"));
         }
     }
 
@@ -88,4 +66,7 @@ public class UserController {
         }
         return ResponseEntity.badRequest().body(new ChangePasswordResponse("enter valid password"));
     }
+
 }
+
+
