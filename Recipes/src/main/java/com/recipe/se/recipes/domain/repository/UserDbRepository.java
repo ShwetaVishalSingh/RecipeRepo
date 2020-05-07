@@ -1,5 +1,6 @@
 package com.recipe.se.recipes.domain.repository;
 
+import com.recipe.se.recipes.domain.exception.UserNotFoundException;
 import com.recipe.se.recipes.domain.user.User;
 import com.recipe.se.recipes.infrastructure.user.*;
 
@@ -62,6 +63,15 @@ public class UserDbRepository implements UserRepository {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public UserModel fetchUserBy(String id) {
+        Optional<User> databaseUser  = crudUserRepository.findByUserId(id);
+        if (!databaseUser.isPresent()) {
+            throw new UserNotFoundException("User is not available");
+        }
+            return   UserModel.convertToUser( databaseUser.get());
     }
 
 

@@ -30,4 +30,8 @@ public class UserService {
 
         return userRepository.checkIfUserAlreadyExist(userName);
     }
+
+    public UserModel getUser(String id) {
+      return userRepository.fetchUserBy(id);
+    }
 }

@@ -11,4 +11,6 @@ public interface UserRepository {
 boolean  changePassword(NewPassword payload);
 
  boolean checkIfUserAlreadyExist(String userName);
+
+ UserModel fetchUserBy(String id);
 }
