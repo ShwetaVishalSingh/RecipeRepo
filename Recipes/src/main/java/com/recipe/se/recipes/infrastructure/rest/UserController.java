@@ -7,10 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -63,6 +60,14 @@ public class UserController {
             }
         }
         return ResponseEntity.badRequest().body(new ChangePasswordResponse("enter valid password"));
+    }
+
+    @GetMapping(value = "{id}")
+    public ResponseEntity<UserModel> getUser(@PathVariable String id){
+
+        UserModel userModel = userService.getUser(id);
+        return ResponseEntity.ok().body(userModel);
+
     }
 
 }
