@@ -39,8 +39,8 @@ public class UserDbRepository implements UserRepository {
     }
 
     @Override
-    public boolean changePassword(NewPassword payload) {
-        Optional<User> userById = crudUserRepository.findById(payload.getUserName());
+    public boolean changePassword(ChangePassword payload) {
+        Optional<User> userById = crudUserRepository.findByUserId(payload.getId());
         if (userById.isPresent()) {
             User user = userById.get();
             if (user.getPassword().equals(payload.getOldPassword()))

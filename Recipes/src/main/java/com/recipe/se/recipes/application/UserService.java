@@ -22,7 +22,7 @@ public class UserService {
         return userRepository.login(payload);
     }
 
-    public boolean  changePassword(NewPassword payload) {
+    public boolean  changePassword(ChangePassword payload) {
          return userRepository.changePassword(payload);
     }
 

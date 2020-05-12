@@ -8,7 +8,7 @@ public interface UserRepository {
 
  LoginResponse login(LoginDetails payload);
 
-boolean  changePassword(NewPassword payload);
+boolean  changePassword(ChangePassword payload);
 
  boolean checkIfUserAlreadyExist(String userName);
 

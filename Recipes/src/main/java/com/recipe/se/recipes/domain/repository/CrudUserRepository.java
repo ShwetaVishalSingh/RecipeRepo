@@ -8,6 +8,6 @@ import java.util.Optional;
 
 public interface CrudUserRepository extends CrudRepository<User,String> {
 
-    @Query(value = "SELECT * FROM USERS rp WHERE rp.ID= ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM USERS ur WHERE ur.ID= ?1", nativeQuery = true)
     Optional<User> findByUserId(String Id);
 }

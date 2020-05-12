@@ -7,10 +7,9 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class NewPassword {
+public class ChangePassword {
 
-    @Email
-    private String userName;
+    private String id;
     private String oldPassword;
 
 
@@ -21,8 +20,8 @@ public class NewPassword {
     private String confirmPassword;
 
     @JsonCreator
-    public NewPassword(@JsonProperty("userName") String userName,@JsonProperty("oldPassword") String oldPasssword, @JsonProperty("newPassword") String newPassword,@JsonProperty("confirmPassword") String confirmPasssword){
-        this.userName =userName;
+    public ChangePassword(@JsonProperty("id") String id, @JsonProperty("oldPassword") String oldPasssword, @JsonProperty("newPassword") String newPassword, @JsonProperty("confirmPassword") String confirmPasssword){
+        this.id =id;
         this.oldPassword = oldPasssword;
         this.newPassword = newPassword;
         this.confirmPassword = confirmPasssword;
@@ -36,12 +35,12 @@ public class NewPassword {
         this.oldPassword = oldPassword;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getId() {
+        return id;
     }
 
-    public void setUserName(String userName) {
-        userName = userName;
+    public void setId(String id) {
+        id = id;
     }
 
     public String getNewPassword() {

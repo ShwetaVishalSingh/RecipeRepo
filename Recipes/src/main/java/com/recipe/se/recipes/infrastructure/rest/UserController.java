@@ -48,7 +48,7 @@ public class UserController {
     }
 
     @PostMapping(value = "changePassword")
-    public ResponseEntity<ChangePasswordResponse> changePassword(@RequestBody NewPassword payload) {
+    public ResponseEntity<ChangePasswordResponse> changePassword(@RequestBody ChangePassword payload) {
 
         if (payload.getNewPassword().equals(payload.getConfirmPassword())) {
             boolean isSucessfulChange = userService.changePassword(payload);
@@ -69,7 +69,6 @@ public class UserController {
         return ResponseEntity.ok().body(userModel);
 
     }
-
 }
 
 
