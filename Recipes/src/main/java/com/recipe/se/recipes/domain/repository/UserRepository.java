@@ -1,15 +1,12 @@
 package com.recipe.se.recipes.domain.repository;
 
-import com.recipe.se.recipes.infrastructure.user.LoginDetails;
-import com.recipe.se.recipes.infrastructure.user.NewPassword;
-import com.recipe.se.recipes.infrastructure.user.RegistrationPayload;
-import com.recipe.se.recipes.infrastructure.user.RegistrationModel;
+import com.recipe.se.recipes.infrastructure.user.*;
 
 public interface UserRepository {
 
  RegistrationModel register(RegistrationPayload registrationPayload);
 
- boolean login(LoginDetails payload);
+ LoginResponse login(LoginDetails payload);
 
 boolean  changePassword(NewPassword payload);
 

@@ -1,10 +1,7 @@
 package com.recipe.se.recipes.application;
 
 import com.recipe.se.recipes.domain.repository.UserRepository;
-import com.recipe.se.recipes.infrastructure.user.LoginDetails;
-import com.recipe.se.recipes.infrastructure.user.NewPassword;
-import com.recipe.se.recipes.infrastructure.user.RegistrationPayload;
-import com.recipe.se.recipes.infrastructure.user.RegistrationModel;
+import com.recipe.se.recipes.infrastructure.user.*;
 
 
 public class UserService {
@@ -20,7 +17,7 @@ public class UserService {
         return userRepository.register(registrationPayload);
     }
 
-    public boolean login(LoginDetails payload)
+    public LoginResponse login(LoginDetails payload)
     {
         return userRepository.login(payload);
     }

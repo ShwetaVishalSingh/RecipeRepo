@@ -2,18 +2,25 @@ package com.recipe.se.recipes.infrastructure.user;
 
 public class LoginResponse {
 
+    private String id;
     private String name;
     private String message;
     private String error;
 
-    public static LoginResponse emptyResponse() {
-      return new LoginResponse("", "", "")  ;
-    }
 
-    public LoginResponse(String name, String message, String error) {
+    public LoginResponse(String id, String name, String message, String error) {
+        this.id = id;
         this.name = name;
         this.message = message;
         this.error = error;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getMessage() {

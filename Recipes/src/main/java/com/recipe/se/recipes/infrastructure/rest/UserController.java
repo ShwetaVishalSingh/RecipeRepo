@@ -3,6 +3,7 @@ package com.recipe.se.recipes.infrastructure.rest;
 
 import com.recipe.se.recipes.application.UserService;
 import com.recipe.se.recipes.infrastructure.user.*;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -42,14 +43,11 @@ public class UserController {
 
     @PostMapping(value = "login", consumes = "application/json", produces = "application/json")
     public ResponseEntity<LoginResponse> login(@RequestBody LoginDetails payload) {
-        boolean isSuccessfulLogin = userService.login(payload);
-        if (isSuccessfulLogin) {
-
-            LoginResponse response = new LoginResponse(payload.getUserName(), "Welcome! " + payload.getUserName(), "");
-            return ResponseEntity.ok().body(response);
-        } else {
-            return ResponseEntity.badRequest().body(new LoginResponse("", "User name or password is not valid! Please enter valid credentials", "User name or password is not valid! Please enter valid credentials"));
+        LoginResponse response = userService.login(payload);
+        if (!StringUtils.isEmpty(response.getError())) {
+            return ResponseEntity.badRequest().body(response);
         }
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping(value = "changePassword")

@@ -1,10 +1,7 @@
 package com.recipe.se.recipes.domain.repository;
 
 import com.recipe.se.recipes.domain.user.User;
-import com.recipe.se.recipes.infrastructure.user.LoginDetails;
-import com.recipe.se.recipes.infrastructure.user.NewPassword;
-import com.recipe.se.recipes.infrastructure.user.RegistrationPayload;
-import com.recipe.se.recipes.infrastructure.user.RegistrationModel;
+import com.recipe.se.recipes.infrastructure.user.*;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -28,14 +25,16 @@ public class UserDbRepository implements UserRepository {
     }
 
     @Override
-    public boolean login(LoginDetails payload) {
+    public LoginResponse login(LoginDetails payload) {
         Optional<User> userById = crudUserRepository.findById(payload.getUserName());
         if(userById.isPresent())
         {
             User user = userById.get();
-            return user.getUserName().equals(payload.getUserName()) && user.getPassword().equals(payload.getPassword());
+            if(user.getUserName().equals(payload.getUserName()) && user.getPassword().equals(payload.getPassword())){
+                return new LoginResponse(user.getUserId(), user.getUserName(), "Welcome! " + user.getFirstName() + " " + user.getLastName(), "");
+            }
         }
-        return false;
+        return new LoginResponse("", "", "User name or password is not valid! Please enter valid credentials", "INVALID_CREDENTIAL");
     }
 
     @Override
