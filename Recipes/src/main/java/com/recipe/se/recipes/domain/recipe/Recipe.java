@@ -54,6 +54,9 @@ public class Recipe implements Serializable {
     @Column(name = "SELLER_ID")
     private String sellerId;
 
+    @Column(name = "STATUS")
+    private boolean status;
+
     public static Recipe convertToRecipe(RecipeDetails recipeDetails) {
         return new Recipe(
                 recipeDetails.getRecipeName(),
