@@ -65,8 +65,8 @@ public class Recipe implements Serializable {
                 recipeDetails.getCookingStep(),
                 recipeDetails.getDescription(),
                 recipeDetails.getImage(),
-                recipeDetails.getSellerId(),
-                recipeDetails.getType());
+                recipeDetails.getType(),
+                recipeDetails.getSellerId());
     }
 
     @PrePersist
