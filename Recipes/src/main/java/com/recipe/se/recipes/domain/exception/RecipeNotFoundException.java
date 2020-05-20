@@ -5,3 +5,4 @@ public class RecipeNotFoundException extends RuntimeException {
         super(e);
     }
 }
+
