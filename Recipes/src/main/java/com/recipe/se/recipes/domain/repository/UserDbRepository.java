@@ -74,6 +74,22 @@ public class UserDbRepository implements UserRepository {
             return   UserModel.convertToUser( databaseUser.get());
     }
 
+    @Override
+    public void updateUser(String userId, UserDetails userDetails)throws UserNotFoundException {
+        Optional<User> databaseUser = crudUserRepository.findByUserId(userId);
+        if (!databaseUser.isPresent()) {
+            throw new UserNotFoundException("User Not found exception");
+        }
+
+        User userNeedsTobeUpdated = databaseUser.get();
+
+        userNeedsTobeUpdated.setFirstName(userDetails.getFirstName());
+        userNeedsTobeUpdated.setLastName(userDetails.getLastName());
+        userNeedsTobeUpdated.setPhoneNumber(userDetails.getPhoneNo());
+
+        crudUserRepository.save(userNeedsTobeUpdated);
+    }
+
 
     private User createUserFromPayload(RegistrationPayload payload) {
         return new User(UUID.randomUUID().toString(), payload.getUserName(), payload.getPassword(),

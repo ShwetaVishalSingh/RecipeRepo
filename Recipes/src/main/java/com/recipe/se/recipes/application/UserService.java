@@ -1,5 +1,6 @@
 package com.recipe.se.recipes.application;
 
+import com.recipe.se.recipes.domain.exception.UserNotFoundException;
 import com.recipe.se.recipes.domain.repository.UserRepository;
 import com.recipe.se.recipes.infrastructure.user.*;
 
@@ -33,5 +34,10 @@ public class UserService {
 
     public UserModel getUser(String id) {
       return userRepository.fetchUserBy(id);
+    }
+
+    public void updateUser(String userId, UserDetails userDetails) throws UserNotFoundException {
+        userRepository.updateUser(userId,userDetails);
+
     }
 }

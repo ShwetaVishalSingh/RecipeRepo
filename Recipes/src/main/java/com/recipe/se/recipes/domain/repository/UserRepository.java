@@ -1,5 +1,6 @@
 package com.recipe.se.recipes.domain.repository;
 
+import com.recipe.se.recipes.domain.exception.UserNotFoundException;
 import com.recipe.se.recipes.infrastructure.user.*;
 
 public interface UserRepository {
@@ -13,4 +14,6 @@ boolean  changePassword(ChangePassword payload);
  boolean checkIfUserAlreadyExist(String userName);
 
  UserModel fetchUserBy(String id);
+
+ void updateUser(String userId, UserDetails userDetails)throws UserNotFoundException;
 }

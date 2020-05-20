@@ -2,6 +2,7 @@ package com.recipe.se.recipes.infrastructure.rest;
 
 
 import com.recipe.se.recipes.application.UserService;
+import com.recipe.se.recipes.domain.exception.UserNotFoundException;
 import com.recipe.se.recipes.infrastructure.user.*;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,6 +69,21 @@ public class UserController {
         UserModel userModel = userService.getUser(id);
         return ResponseEntity.ok().body(userModel);
 
+    }
+
+    @PostMapping(value = "{userId}")
+    public ResponseEntity updateUser(@PathVariable String userId, @RequestBody UserDetails userDetails) {
+        if (StringUtils.isEmpty(userId) || null == userDetails) {
+            return ResponseEntity.badRequest().body("user id is null or empty");
+        }
+        try {
+            userService.updateUser(userId, userDetails);
+        } catch (UserNotFoundException e) {
+            return ResponseEntity.badRequest().body("user is not available so we can not update it");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Something went wrong while updating the user");
+        }
+        return ResponseEntity.ok().body("User has been updated");
     }
 }
 
