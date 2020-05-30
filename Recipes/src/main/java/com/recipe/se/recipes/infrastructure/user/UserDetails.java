@@ -7,18 +7,18 @@ public class UserDetails {
 
     private String firstName;
     private String lastName;
-    private String phoneNo;
+    private String phoneNumber;
 
 
     @JsonCreator
     public UserDetails(@JsonProperty("firstName") String firstName,
 
                         @JsonProperty("lastName") String lastName,
-                         @JsonProperty("phoneNo") String phoneNo) {
+                         @JsonProperty("phoneNumber") String phoneNumber) {
 
         this.firstName = firstName;
         this.lastName = lastName;
-        this.phoneNo = phoneNo;
+        this.phoneNumber = phoneNumber;
 
     }
 
@@ -38,11 +38,11 @@ public class UserDetails {
         this.lastName = lastName;
     }
 
-    public String getPhoneNo() {
-        return phoneNo;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhoneNo(String phoneNo) {
-        this.phoneNo = phoneNo;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }
