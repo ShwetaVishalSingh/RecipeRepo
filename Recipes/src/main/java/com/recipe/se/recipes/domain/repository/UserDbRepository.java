@@ -85,7 +85,7 @@ public class UserDbRepository implements UserRepository {
 
         userNeedsTobeUpdated.setFirstName(userDetails.getFirstName());
         userNeedsTobeUpdated.setLastName(userDetails.getLastName());
-        userNeedsTobeUpdated.setPhoneNumber(userDetails.getPhoneNo());
+        userNeedsTobeUpdated.setPhoneNumber(userDetails.getPhoneNumber());
 
         crudUserRepository.save(userNeedsTobeUpdated);
     }

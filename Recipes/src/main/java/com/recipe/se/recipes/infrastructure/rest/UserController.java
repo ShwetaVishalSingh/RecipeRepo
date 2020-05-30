@@ -72,18 +72,18 @@ public class UserController {
     }
 
     @PostMapping(value = "{userId}")
-    public ResponseEntity updateUser(@PathVariable String userId, @RequestBody UserDetails userDetails) {
+    public ResponseEntity<UserUpdateModel> updateUser(@PathVariable String userId, @RequestBody UserDetails userDetails) {
         if (StringUtils.isEmpty(userId) || null == userDetails) {
-            return ResponseEntity.badRequest().body("user id is null or empty");
+            return ResponseEntity.badRequest().body(new UserUpdateModel("","Something went wrong"));
         }
         try {
             userService.updateUser(userId, userDetails);
         } catch (UserNotFoundException e) {
-            return ResponseEntity.badRequest().body("user is not available so we can not update it");
+            return ResponseEntity.badRequest().body( new UserUpdateModel("user is not available so we can not update it",""));
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Something went wrong while updating the user");
+            return ResponseEntity.badRequest().body( new UserUpdateModel("Something went wrong while updating the user","") );
         }
-        return ResponseEntity.ok().body("User has been updated");
+        return ResponseEntity.ok().body(new UserUpdateModel("User has been updated",""));
     }
 }
 
