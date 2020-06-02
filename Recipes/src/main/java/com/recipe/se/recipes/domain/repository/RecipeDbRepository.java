@@ -3,11 +3,12 @@ package com.recipe.se.recipes.domain.repository;
 import com.recipe.se.recipes.domain.exception.RecipeNotFoundException;
 import com.recipe.se.recipes.domain.exception.StoreNotFoundException;
 import com.recipe.se.recipes.domain.recipe.Recipe;
-import com.recipe.se.recipes.domain.seller.Seller;
 import com.recipe.se.recipes.infrastructure.recipe.RecipeDetails;
 import com.recipe.se.recipes.infrastructure.recipe.RecipeModel;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public class RecipeDbRepository implements RecipeRepository {
 
@@ -30,7 +31,7 @@ public class RecipeDbRepository implements RecipeRepository {
         List<RecipeModel> recipesList = new ArrayList<>();
         Iterable<Recipe> recipes = databaseRepository.findAll();
         for (Recipe recipe : recipes) {
-           recipesList.add(RecipeModel.convertToRecipe(recipe));
+            recipesList.add(RecipeModel.convertToRecipe(recipe));
         }
         return recipesList;
     }
@@ -69,6 +70,8 @@ public class RecipeDbRepository implements RecipeRepository {
         recipeNeedsTobeUpdated.setDescription(null != recipeDetails.getDescription() ? recipeDetails.getDescription() : recipeNeedsTobeUpdated.getDescription());
         recipeNeedsTobeUpdated.setSteps(null != recipeDetails.getCookingStep() ? recipeDetails.getCookingStep() : recipeNeedsTobeUpdated.getSteps());
         recipeNeedsTobeUpdated.setPortion(recipeDetails.getPortion());
+        recipeNeedsTobeUpdated.setSellerId(recipeDetails.getSellerId());
+        recipeNeedsTobeUpdated.setEnabled(recipeDetails.isEnabled());
         recipeNeedsTobeUpdated.setIngredients(null != recipeDetails.getIngredients() ? recipeDetails.getIngredients() : recipeNeedsTobeUpdated.getIngredients());
         databaseRepository.save(recipeNeedsTobeUpdated);
     }

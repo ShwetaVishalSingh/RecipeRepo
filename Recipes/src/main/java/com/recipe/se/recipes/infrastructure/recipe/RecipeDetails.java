@@ -12,6 +12,7 @@ public class RecipeDetails {
     private String description;
     private String type;
     private String sellerId;
+    private boolean enabled;
 
 
     @JsonCreator
@@ -22,7 +23,8 @@ public class RecipeDetails {
                          @JsonProperty("recipeImage") String image,
                          @JsonProperty("description") String description,
                          @JsonProperty("sellerId") String sellerId,
-                         @JsonProperty("type") String type) {
+                         @JsonProperty("type") String type,
+                         @JsonProperty("enabled")  boolean enabled) {
 
         this.recipeName = recipeName;
         this.portion = portion;
@@ -32,6 +34,15 @@ public class RecipeDetails {
         this.image = image;
         this.type = type;
         this.sellerId = sellerId;
+        this.enabled= enabled;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public String getSellerId() {
@@ -109,6 +120,7 @@ public class RecipeDetails {
                 ", description='" + description + '\'' +
                 ", type='" + type + '\'' +
                 ", sellerId='" + sellerId + '\'' +
+                ", enabled=" + enabled +
                 '}';
     }
 }

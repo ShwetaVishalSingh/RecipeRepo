@@ -65,8 +65,9 @@ public class Recipe implements Serializable {
                 recipeDetails.getCookingStep(),
                 recipeDetails.getDescription(),
                 recipeDetails.getImage(),
+                recipeDetails.getSellerId(),
                 recipeDetails.getType(),
-                recipeDetails.getSellerId());
+                recipeDetails.isEnabled());
     }
 
     @PrePersist
@@ -74,19 +75,28 @@ public class Recipe implements Serializable {
         if (this.createdDate == null) createdDate = new Date();
     }
 
-    public Recipe(String name, int portion, String ingredients, String steps, String description, String image, String type, String sellerId) {
+    public Recipe(String name, int portion, String ingredients, String steps, String description, String image, String sellerId, String type, boolean enabled) {
         this.name = name;
         this.portion = portion;
         this.ingredients = ingredients;
         this.steps = steps;
         this.description = description;
         this.image = image;
-        this.type = type;
         this.sellerId = sellerId;
+        this.type = type;
+        this.status = enabled;
 
     }
 
     public Recipe() {
+    }
+
+    public boolean isEnabled() {
+        return this.status;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.status = enabled;
     }
 
     public String getSellerId() {
