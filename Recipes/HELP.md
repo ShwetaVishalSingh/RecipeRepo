@@ -1,6 +1,6 @@
 # Getting Started
 
-#Run application with different profile
+#Run application with different profiles
 - gradlew bootRun --args='--spring.profiles.active=test'
 - gradlew bootRun --args='--spring.profiles.active=prod'
 #Site URL
